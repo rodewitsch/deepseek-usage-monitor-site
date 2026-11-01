@@ -1,0 +1,161 @@
+{
+  "locale": "id_ID",
+  "htmlLang": "id",
+  "meta": {
+    "title": "DeepSeek Usage Monitor — saldo, pengeluaran, dan anggaran DeepSeek di toolbar Chrome",
+    "description": "Ekstensi Chrome untuk DeepSeek Platform: saldo dompet, pengeluaran hari ini dan per API key, grafik 30 hari, serta anggaran harian — langsung di toolbar browser. Tanpa API key dan tanpa kata sandi.",
+    "ogTitle": "DeepSeek Usage Monitor — ekstensi Chrome",
+    "ogDesc": "Saldo, pengeluaran hari ini dan per key, grafik 30 hari, serta anggaran harian DeepSeek — langsung di toolbar browser."
+  },
+  "nav": {
+    "features": "Fitur",
+    "budgets": "Anggaran",
+    "screenshots": "Tangkapan Layar",
+    "privacy": "Privasi",
+    "faq": "FAQ",
+    "install": "Pasang"
+  },
+  "hero": {
+    "badge": "Tersedia di Chrome Web Store",
+    "title": "<span class=\"grad\">DeepSeek</span> Anda<br>tetap terkendali",
+    "sub": "Saldo dompet, pengeluaran hari ini dan per API key, grafik 30 hari, serta anggaran harian — langsung di toolbar browser. Tanpa API key, tanpa kata sandi, tanpa login terpisah.",
+    "install": "Pasang dari Chrome Web Store",
+    "source": "Kode sumber",
+    "point1": "Ikon toolbar dengan angka langsung",
+    "point2": "Pelacakan pengeluaran tiap API key",
+    "point3": "Anggaran harian dan notifikasi",
+    "point4": "Tanpa telemetri dan analitik"
+  },
+  "features": {
+    "label": "Fitur",
+    "title": "Semua soal pengeluaran dalam sekali lihat",
+    "sub": "Ekstensi hanya mengulang permintaan yang dilakukan konsol web DeepSeek sendiri dan mengubahnya menjadi dasbor yang mudah dibaca."
+  },
+  "f1": {
+    "title": "Saldo dompet",
+    "desc": "Saldo berbayar dan bonus dipisah. Begitu saldo turun di bawah ambang Anda, ikon menjadi merah."
+  },
+  "f2": {
+    "title": "Pengeluaran hari ini",
+    "desc": "Pengeluaran dan jumlah token hari ini. “Hari ini” diambil terpisah agar angkanya tetap akurat sampai pergantian hari."
+  },
+  "f3": {
+    "title": "Perhitungan per API key",
+    "desc": "Terlihat key mana yang paling mahal. Ikon dan grafik bisa dibatasi ke satu key atau kombinasi key apa pun."
+  },
+  "f4": {
+    "title": "Grafik 30 hari",
+    "desc": "Batang per hari untuk rentang yang dipilih. Klik key di daftar dan batang menjadi segmen bertumpuk dengan legenda warna."
+  },
+  "f5": {
+    "title": "Ikon sesuai metrik Anda",
+    "desc": "Pengeluaran hari ini, pengeluaran periode, saldo, atau token — Anda yang menentukan apa yang tampil di ikon toolbar."
+  },
+  "f6": {
+    "title": "Penyegaran otomatis",
+    "desc": "Data diperbarui di latar belakang sesuai jadwal (default tiap menit) atau tidak sama sekali. Tombol segarkan manual selalu tersedia."
+  },
+  "budgets": {
+    "label": "Anggaran",
+    "title": "Berhenti membayar<br>terlalu mahal untuk API key",
+    "sub": "Tentukan anggaran harian untuk seluruh akun dan satu untuk setiap key. Ikon menjadi hijau, oranye, atau merah sesuai anggaran yang paling dekat dengan batasnya.",
+    "li1": "Anggaran akun serta anggaran terpisah per key",
+    "li2": "Ambang peringatan yang bisa diatur (default 90 %)",
+    "li3": "Notifikasi sistem saat mendekati dan saat melewati batas",
+    "li4": "Satu notifikasi per hari per anggaran — tanpa spam",
+    "stat1": "anggaran terpakai",
+    "stat2": "sisa hari ini",
+    "stat3": "batas per key",
+    "card1": "$1.13 terpakai · sisa $8.87 dari $10.00",
+    "card2title": "vscode_asus (per key)",
+    "card2": "$1.13 terpakai · lebih $0.13 dari $1.00",
+    "card3title": "vscode_work (per key)",
+    "card3": "$0.13 terpakai · sisa $0.87 dari $1.00",
+    "card4title": "vscode (per key)",
+    "card4": "Anggaran untuk key ini dimatikan"
+  },
+  "how": {
+    "label": "Cara kerjanya",
+    "title": "Tiga langkah sampai grafik pertama",
+    "sub": "Tanpa registrasi terpisah dan tanpa API key — ekstensi memakai sesi yang sudah terbuka di browser.",
+    "s1title": "Pasang ekstensi",
+    "s1desc": "Satu klik dari Chrome Web Store. Butuh Chrome 116 atau lebih baru.",
+    "s2title": "Buka platform.deepseek.com",
+    "s2desc": "Masuk ke akun — sesi terdeteksi otomatis.",
+    "s3title": "Klik ikon",
+    "s3desc": "Penyegaran pertama berjalan sendiri. Setelah itu data diperbarui di latar belakang."
+  },
+  "shots": {
+    "label": "Tangkapan layar",
+    "title": "Tampilannya",
+    "sub": "Antarmuka gelap, grid rapat, dan tidak ada satu pun tombol berlebih.",
+    "popupTitle": "Popup",
+    "popupDesc": "Saldo, pengeluaran dan token hari ini, batang anggaran, grafik, dan daftar API key.",
+    "optionsTitle": "Pengaturan",
+    "optionsDesc": "Metrik ikon, pilihan key, interval penyegaran, jendela agregasi, anggaran, dan ambang."
+  },
+  "privacy": {
+    "title": "Privat secara default",
+    "text": "Ekstensi hanya menghubungi <code>platform.deepseek.com</code> dan melakukan permintaan baca-saja yang sama dengan konsol web DeepSeek. Tidak ada API key atau kata sandi yang disimpan — ekstensi memakai sesi yang sudah terbuka di browser. Semua data hanya ada di komputer Anda: tanpa telemetri, analitik, iklan, dan tanpa dibagikan ke pihak ketiga. Hapus ekstensinya dan data ikut hilang.",
+    "i1title": "3 permintaan",
+    "i1desc": "Hanya endpoint konsol yang diperlukan untuk saldo dan pengeluaran.",
+    "i2title": "0 domain eksternal",
+    "i2desc": "Tanpa server pihak ketiga, CDN, atau pelaporan error.",
+    "i3title": "Penyimpanan lokal",
+    "i3desc": "Pengaturan dan angka tersimpan di <code>chrome.storage.local</code>.",
+    "i4title": "Kode terbuka",
+    "i4desc": "Lisensi MIT, sumber di GitHub — setiap baris bisa diperiksa."
+  },
+  "faq": {
+    "title": "Pertanyaan umum",
+    "q1": "Apakah perlu API key DeepSeek?",
+    "a1": "Tidak. Ekstensi memakai sesi yang sudah terbuka di browser di <code>platform.deepseek.com</code>. API key dan kata sandi tidak diminta maupun disimpan.",
+    "q2": "Apakah ekstensi mengirim data saya ke tempat lain?",
+    "a2": "Tidak. Permintaan hanya ke <code>platform.deepseek.com</code>, sisanya tetap lokal. Tanpa analitik, telemetri, dan iklan.",
+    "q3": "Ikon menampilkan “−”, apa yang harus dilakukan?",
+    "a3": "Token WAF DeepSeek sudah kedaluwarsa. Buka <code>platform.deepseek.com</code> sekali — token diperbarui sendiri dan ekstensi mengambilnya pada penyegaran berikutnya. Ekstensi tidak pernah membuka tab sendiri.",
+    "q4": "Ikon menampilkan “!” atau error otorisasi",
+    "a4": "Sesi tidak ditemukan atau sudah kedaluwarsa. Masuk ke platform, lalu tekan “Deteksi ulang sesi” di pengaturan ekstensi.",
+    "q5": "Seberapa akurat angka “hari ini”?",
+    "a5": "Rangkaian harian platform belum memuat hari berjalan sampai hari itu berakhir, jadi ekstensi mengambil “hari ini” dari rangkaian per jam dan menambahkannya terpisah ke grafik.",
+    "q6": "Apakah ada versi Firefox?",
+    "a6": "Saat ini hanya Chrome dan browser berbasis Chromium (Edge, Brave, Arc) — butuh Chrome 116+."
+  },
+  "cta": {
+    "title": "Pasang gratis",
+    "sub": "Ekstensi ini sepenuhnya gratis dan open source.",
+    "install": "Pasang dari Chrome Web Store",
+    "source": "Lihat kode sumber"
+  },
+  "support": {
+    "title": "Dukung proyek ini",
+    "text": "Dukungan Anda sangat berarti. Setiap donasi dipakai untuk mengembangkan proyek dan menjaga infrastruktur tetap berjalan 💙",
+    "button": "Donasi"
+  },
+  "footer": {
+    "desc": "Saldo, pengeluaran, dan anggaran harian DeepSeek Platform — langsung di toolbar browser.",
+    "license": "— gratis dan open source.",
+    "links": "Tautan",
+    "docs": "Dokumentasi",
+    "features": "Fitur",
+    "contacts": "Kontak",
+    "author": "Penulis (rodevitsch)",
+    "bug": "Laporkan masalah",
+    "bottom": "Open source under MIT License.",
+    "disclaimer": "Ekstensi tidak resmi, tidak berafiliasi dengan DeepSeek."
+  },
+  "alt": {
+    "popup": "Popup DeepSeek Usage Monitor: saldo, pengeluaran hari ini, anggaran, dan grafik",
+    "popupShot": "Popup dengan saldo, pengeluaran hari ini, dan grafik",
+    "optionsShot": "Halaman pengaturan: ikon, penyegaran, anggaran, sesi"
+  },
+  "a11y": {
+    "menu": "Menu",
+    "toTop": "Ke atas",
+    "lang": "Bahasa",
+    "langCurrent": "Bahasa saat ini"
+  },
+  "lang": {
+    "ru": "Rusia"
+  }
+}

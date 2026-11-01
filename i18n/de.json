@@ -1,0 +1,161 @@
+{
+  "locale": "de_DE",
+  "htmlLang": "de",
+  "meta": {
+    "title": "DeepSeek Usage Monitor — Guthaben, Ausgaben und Budgets in der Chrome-Leiste",
+    "description": "Chrome-Erweiterung für die DeepSeek Platform: Wallet-Guthaben, Ausgaben heute und pro API-Key, 30-Tage-Diagramm und Tagesbudgets — direkt in der Browserleiste. Ohne API-Key, ohne Passwort.",
+    "ogTitle": "DeepSeek Usage Monitor — Chrome-Erweiterung",
+    "ogDesc": "Guthaben, Ausgaben heute und pro API-Key, 30-Tage-Diagramm und Tagesbudgets für DeepSeek — direkt in der Browserleiste."
+  },
+  "nav": {
+    "features": "Funktionen",
+    "budgets": "Budgets",
+    "screenshots": "Screenshots",
+    "privacy": "Datenschutz",
+    "faq": "FAQ",
+    "install": "Installieren"
+  },
+  "hero": {
+    "badge": "Im Chrome Web Store verfügbar",
+    "title": "Ihr <span class=\"grad\">DeepSeek</span><br>unter Kontrolle",
+    "sub": "Wallet-Guthaben, Ausgaben heute und pro API-Key, 30-Tage-Diagramm und Tagesbudgets — direkt in der Browserleiste. Kein API-Key, kein Passwort, keine separate Anmeldung.",
+    "install": "Aus dem Chrome Web Store installieren",
+    "source": "Quellcode",
+    "point1": "Symbol in der Leiste mit Live-Zahlen",
+    "point2": "Ausgaben pro API-Key im Blick",
+    "point3": "Tagesbudgets und Benachrichtigungen",
+    "point4": "Keine Telemetrie, keine Analytics"
+  },
+  "features": {
+    "label": "Funktionen",
+    "title": "Alles zu den Ausgaben auf einen Blick",
+    "sub": "Die Erweiterung wiederholt nur die Anfragen der DeepSeek-Webkonsole und macht daraus ein übersichtliches Dashboard."
+  },
+  "f1": {
+    "title": "Wallet-Guthaben",
+    "desc": "Bezahltes und Bonus-Guthaben getrennt. Liegt das Guthaben unter dem eingestellten Schwellenwert, wird das Symbol rot."
+  },
+  "f2": {
+    "title": "Ausgaben heute",
+    "desc": "Ausgaben und Token-Anzahl für den heutigen Tag. „Heute“ wird separat geladen, damit die Zahl bis zum Tageswechsel stimmt."
+  },
+  "f3": {
+    "title": "Auswertung pro API-Key",
+    "desc": "Sie sehen, welcher Key am teuersten ist. Symbol und Diagramm lassen sich auf einen Key oder eine beliebige Auswahl beschränken."
+  },
+  "f4": {
+    "title": "30-Tage-Diagramm",
+    "desc": "Tagesbalken für den gewählten Zeitraum. Klicken Sie Keys in der Liste an — die Balken werden zu gestapelten Segmenten mit Farblegende."
+  },
+  "f5": {
+    "title": "Symbol nach Ihrer Metrik",
+    "desc": "Ausgaben heute, Ausgaben im Zeitraum, Guthaben oder Token — Sie entscheiden, was das Symbol in der Leiste zeigt."
+  },
+  "f6": {
+    "title": "Automatische Aktualisierung",
+    "desc": "Die Daten aktualisieren sich im Hintergrund nach Zeitplan (standardmäßig jede Minute) oder gar nicht. Ein Button zum manuellen Aktualisieren ist immer da."
+  },
+  "budgets": {
+    "label": "Budgets",
+    "title": "Schluss mit<br>zu hohen API-Kosten",
+    "sub": "Legen Sie ein Tagesbudget für das ganze Konto und je Key fest. Das Symbol wird grün, orange oder rot — je nachdem, welches Budget seiner Grenze am nächsten ist.",
+    "li1": "Gesamtbudget des Kontos und unabhängige Budgets pro Key",
+    "li2": "Einstellbare Warnschwelle (standardmäßig 90 %)",
+    "li3": "Systembenachrichtigung beim Annähern an und beim Überschreiten des Limits",
+    "li4": "Eine Benachrichtigung pro Tag und Budget — kein Spam",
+    "stat1": "des Budgets verbraucht",
+    "stat2": "für heute übrig",
+    "stat3": "Limit pro Key",
+    "card1": "$1.13 ausgegeben · $8.87 von $10.00 übrig",
+    "card2title": "vscode_asus (pro Key)",
+    "card2": "$1.13 ausgegeben · $0.13 über dem Limit von $1.00",
+    "card3title": "vscode_work (pro Key)",
+    "card3": "$0.13 ausgegeben · $0.87 von $1.00 übrig",
+    "card4title": "vscode (pro Key)",
+    "card4": "Budget für diesen Key ist aus"
+  },
+  "how": {
+    "label": "So funktioniert es",
+    "title": "Drei Schritte bis zum ersten Diagramm",
+    "sub": "Keine separate Registrierung und kein API-Key — die Erweiterung nutzt die bereits im Browser geöffnete Sitzung.",
+    "s1title": "Erweiterung installieren",
+    "s1desc": "Mit einem Klick aus dem Chrome Web Store. Chrome 116 oder neuer erforderlich.",
+    "s2title": "platform.deepseek.com öffnen",
+    "s2desc": "Anmelden — die Sitzung wird automatisch übernommen.",
+    "s3title": "Auf das Symbol klicken",
+    "s3desc": "Die erste Aktualisierung läuft automatisch. Danach aktualisieren sich die Daten im Hintergrund."
+  },
+  "shots": {
+    "label": "Screenshots",
+    "title": "So sieht es aus",
+    "sub": "Dunkle Oberfläche, dichtes Raster und kein einziger überflüssiger Button.",
+    "popupTitle": "Popup",
+    "popupDesc": "Guthaben, Ausgaben und Token heute, Budget-Balken, Diagramm und Key-Liste.",
+    "optionsTitle": "Einstellungen",
+    "optionsDesc": "Metrik des Symbols, Key-Auswahl, Aktualisierungsintervall, Aggregationszeitraum, Budgets und Schwellenwerte."
+  },
+  "privacy": {
+    "title": "Privat by default",
+    "text": "Die Erweiterung spricht nur mit <code>platform.deepseek.com</code> und stellt dieselben rein lesenden Anfragen wie die DeepSeek-Webkonsole. Weder API-Key noch Passwort werden gespeichert — genutzt wird die bereits im Browser offene Sitzung. Alle Daten bleiben auf Ihrem Rechner: keine Telemetrie, keine Analytics, keine Werbung, keine Weitergabe an Dritte. Erweiterung entfernt — Daten weg.",
+    "i1title": "3 Anfragen",
+    "i1desc": "Nur die Endpunkte der Konsole, die für Guthaben und Ausgaben nötig sind.",
+    "i2title": "0 fremde Domains",
+    "i2desc": "Keine externen Server, CDNs oder Fehlerberichte.",
+    "i3title": "Lokaler Speicher",
+    "i3desc": "Einstellungen und zwischengespeicherte Zahlen liegen in <code>chrome.storage.local</code>.",
+    "i4title": "Open Source",
+    "i4desc": "MIT-Lizenz, Quellcode auf GitHub — jede Zeile prüfbar."
+  },
+  "faq": {
+    "title": "Häufige Fragen",
+    "q1": "Brauche ich einen DeepSeek-API-Key?",
+    "a1": "Nein. Die Erweiterung nutzt die Sitzung, die im Browser auf <code>platform.deepseek.com</code> bereits offen ist. API-Key und Passwort werden weder abgefragt noch gespeichert.",
+    "q2": "Sendet die Erweiterung meine Daten irgendwohin?",
+    "a2": "Nein. Anfragen gehen nur an <code>platform.deepseek.com</code>, alles andere bleibt lokal. Keine Analytics, keine Telemetrie, keine Werbung.",
+    "q3": "Das Symbol zeigt „−“ — was tun?",
+    "a3": "Das WAF-Token von DeepSeek ist abgelaufen. Einmal <code>platform.deepseek.com</code> öffnen — das Token erneuert sich selbst, die Erweiterung übernimmt es bei der nächsten Aktualisierung. Tabs öffnet sie nie selbst.",
+    "q4": "Das Symbol zeigt „!“ oder einen Autorisierungsfehler",
+    "a4": "Die Sitzung wurde nicht gefunden oder ist abgelaufen. Auf der Plattform anmelden und dann in den Einstellungen „Sitzung neu erkennen“ anklicken.",
+    "q5": "Wie genau ist der Wert „heute“?",
+    "a5": "Die Tagesreihe der Plattform enthält den laufenden Tag nicht, daher nimmt die Erweiterung „heute“ aus der Stundenreihe und addiert es separat zum Diagramm.",
+    "q6": "Gibt es eine Firefox-Version?",
+    "a6": "Nur Chrome und Chromium-basierte Browser (Edge, Brave, Arc) — Chrome 116+ erforderlich."
+  },
+  "cta": {
+    "title": "Kostenlos installieren",
+    "sub": "Die Erweiterung ist komplett kostenlos und Open Source.",
+    "install": "Aus dem Chrome Web Store installieren",
+    "source": "Quellcode ansehen"
+  },
+  "support": {
+    "title": "Projekt unterstützen",
+    "text": "Ich freue mich über jede Unterstützung. Jede Spende fließt in die Weiterentwicklung der Projekte und den Betrieb der Infrastruktur 💙",
+    "button": "Spenden"
+  },
+  "footer": {
+    "desc": "Guthaben, Ausgaben und Tagesbudgets für die DeepSeek Platform — direkt in der Browserleiste.",
+    "license": "— kostenlos und Open Source.",
+    "links": "Links",
+    "docs": "Dokumentation",
+    "features": "Funktionen",
+    "contacts": "Kontakt",
+    "author": "Autor (rodevitsch)",
+    "bug": "Fehler melden",
+    "bottom": "Open source under MIT License.",
+    "disclaimer": "Inoffizielle Erweiterung, steht in keiner Verbindung zu DeepSeek."
+  },
+  "alt": {
+    "popup": "DeepSeek Usage Monitor Popup: Guthaben, Ausgaben heute, Budgets und Diagramm",
+    "popupShot": "Popup mit Guthaben, Ausgaben heute und Diagramm",
+    "optionsShot": "Einstellungsseite: Symbol, Aktualisierung, Budgets, Sitzung"
+  },
+  "a11y": {
+    "menu": "Menü",
+    "toTop": "Nach oben",
+    "lang": "Sprache",
+    "langCurrent": "Aktuelle Sprache"
+  },
+  "lang": {
+    "ru": "Russisch"
+  }
+}

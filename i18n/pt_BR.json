@@ -1,0 +1,161 @@
+{
+  "locale": "pt_BR",
+  "htmlLang": "pt-BR",
+  "meta": {
+    "title": "DeepSeek Usage Monitor — saldo, gastos e orçamentos do DeepSeek na barra do Chrome",
+    "description": "Extensão do Chrome para o DeepSeek Platform: saldo da carteira, gasto de hoje e por chave de API, gráfico de 30 dias e orçamentos diários — direto na barra do navegador. Sem chave de API e sem senha.",
+    "ogTitle": "DeepSeek Usage Monitor — extensão do Chrome",
+    "ogDesc": "Saldo, gasto de hoje e por chave, gráfico de 30 dias e orçamentos diários do DeepSeek — direto na barra do navegador."
+  },
+  "nav": {
+    "features": "Recursos",
+    "budgets": "Orçamentos",
+    "screenshots": "Capturas",
+    "privacy": "Privacidade",
+    "faq": "FAQ",
+    "install": "Instalar"
+  },
+  "hero": {
+    "badge": "Disponível na Chrome Web Store",
+    "title": "Seu <span class=\"grad\">DeepSeek</span><br>sob controle",
+    "sub": "Saldo da carteira, gasto de hoje e por cada chave de API, gráfico de 30 dias e orçamentos diários — direto na barra do navegador. Sem chave de API, sem senha e sem login separado.",
+    "install": "Instalar da Chrome Web Store",
+    "source": "Código-fonte",
+    "point1": "Ícone na barra com números ao vivo",
+    "point2": "Gasto por cada chave de API",
+    "point3": "Orçamentos diários e notificações",
+    "point4": "Sem telemetria e sem analytics"
+  },
+  "features": {
+    "label": "Recursos",
+    "title": "Tudo sobre seus gastos de relance",
+    "sub": "A extensão repete apenas as requisições que o próprio console web do DeepSeek faz e transforma isso em um painel legível."
+  },
+  "f1": {
+    "title": "Saldo da carteira",
+    "desc": "Saldo pago e bônus separados. Quando o saldo cai abaixo do seu limite, o ícone fica vermelho."
+  },
+  "f2": {
+    "title": "Gasto de hoje",
+    "desc": "Gasto e quantidade de tokens do dia. “Hoje” é buscado separadamente para o número ficar certo até a virada do dia."
+  },
+  "f3": {
+    "title": "Controle por chave de API",
+    "desc": "Dá para ver qual chave custa mais caro. O ícone e o gráfico podem ser limitados a uma chave ou a qualquer seleção."
+  },
+  "f4": {
+    "title": "Gráfico de 30 dias",
+    "desc": "Barras por dia do período escolhido. Clique nas chaves da lista e as barras viram segmentos empilhados com legenda de cores."
+  },
+  "f5": {
+    "title": "Ícone com a sua métrica",
+    "desc": "Gasto de hoje, gasto do período, saldo ou tokens — você decide o que o ícone da barra mostra."
+  },
+  "f6": {
+    "title": "Atualização automática",
+    "desc": "Os dados são atualizados em segundo plano conforme um intervalo (a cada minuto por padrão) ou nem isso. O botão de atualizar manualmente está sempre lá."
+  },
+  "budgets": {
+    "label": "Orçamentos",
+    "title": "Pare de pagar caro<br>pelas chaves de API",
+    "sub": "Defina um orçamento diário para a conta inteira e um para cada chave. O ícone fica verde, laranja ou vermelho conforme o orçamento mais próximo do limite.",
+    "li1": "Orçamento da conta e orçamentos independentes por chave",
+    "li2": "Limite de aviso configurável (90 % por padrão)",
+    "li3": "Notificação do sistema ao chegar perto e ao ultrapassar o limite",
+    "li4": "Uma notificação por dia por orçamento — sem spam",
+    "stat1": "do orçamento usado",
+    "stat2": "restante hoje",
+    "stat3": "limite por chave",
+    "card1": "$1.13 gastos · $8.87 restantes de $10.00",
+    "card2title": "vscode_asus (por chave)",
+    "card2": "$1.13 gastos · $0.13 acima de $1.00",
+    "card3title": "vscode_work (por chave)",
+    "card3": "$0.13 gastos · $0.87 restantes de $1.00",
+    "card4title": "vscode (por chave)",
+    "card4": "O orçamento desta chave está desligado"
+  },
+  "how": {
+    "label": "Como funciona",
+    "title": "Três passos até o primeiro gráfico",
+    "sub": "Sem cadastro separado e sem chave de API — a extensão usa a sessão que já está aberta no navegador.",
+    "s1title": "Instale a extensão",
+    "s1desc": "Um clique na Chrome Web Store. Requer Chrome 116 ou mais recente.",
+    "s2title": "Abra platform.deepseek.com",
+    "s2desc": "Entre na conta — a sessão é detectada automaticamente.",
+    "s3title": "Clique no ícone",
+    "s3desc": "A primeira atualização acontece sozinha. Depois os dados se atualizam em segundo plano."
+  },
+  "shots": {
+    "label": "Capturas de tela",
+    "title": "Como fica",
+    "sub": "Interface escura, grade densa e nenhum botão desnecessário.",
+    "popupTitle": "Popup",
+    "popupDesc": "Saldo, gasto e tokens de hoje, barras de orçamento, gráfico e lista de chaves de API.",
+    "optionsTitle": "Configurações",
+    "optionsDesc": "Métrica do ícone, seleção de chaves, intervalo de atualização, janela de agregação, orçamentos e limites."
+  },
+  "privacy": {
+    "title": "Privada por padrão",
+    "text": "A extensão fala apenas com <code>platform.deepseek.com</code> e faz as mesmas requisições somente de leitura que o console web do DeepSeek. Nenhuma chave de API ou senha é armazenada — ela usa a sessão já aberta no navegador. Todos os dados ficam no seu computador: sem telemetria, analytics, anúncios ou envio a terceiros. Removeu a extensão? Os dados somem com ela.",
+    "i1title": "3 requisições",
+    "i1desc": "Somente os endpoints do console necessários para saldo e gastos.",
+    "i2title": "0 domínios externos",
+    "i2desc": "Sem servidores de terceiros, CDNs ou relatórios de erro.",
+    "i3title": "Armazenamento local",
+    "i3desc": "Configurações e números em cache ficam em <code>chrome.storage.local</code>.",
+    "i4title": "Código aberto",
+    "i4desc": "Licença MIT, código no GitHub — cada linha pode ser conferida."
+  },
+  "faq": {
+    "title": "Perguntas frequentes",
+    "q1": "Preciso de uma chave de API do DeepSeek?",
+    "a1": "Não. A extensão usa a sessão que já está aberta no navegador em <code>platform.deepseek.com</code>. Nem a chave de API nem a senha são pedidas ou armazenadas.",
+    "q2": "A extensão envia meus dados para algum outro lugar?",
+    "a2": "Não. As requisições vão só para <code>platform.deepseek.com</code>; o resto fica local. Sem analytics, telemetria ou anúncios.",
+    "q3": "O ícone mostra “−”, o que fazer?",
+    "a3": "O token WAF do DeepSeek expirou. Abra <code>platform.deepseek.com</code> uma vez — o token é renovado e a extensão o pega na próxima atualização. Ela nunca abre abas sozinha.",
+    "q4": "O ícone mostra “!” ou erro de autorização",
+    "a4": "A sessão não foi encontrada ou expirou. Entre na plataforma e pressione “Redetectar sessão” nas configurações da extensão.",
+    "q5": "Quão precisa é a cifra “hoje”?",
+    "a5": "A série diária da plataforma não inclui o dia atual até ele acabar, então a extensão pega “hoje” da série horária e soma separadamente no gráfico.",
+    "q6": "Existe versão para Firefox?",
+    "a6": "Por enquanto apenas Chrome e navegadores baseados em Chromium (Edge, Brave, Arc) — requer Chrome 116+."
+  },
+  "cta": {
+    "title": "Instale de graça",
+    "sub": "A extensão é totalmente gratuita e de código aberto.",
+    "install": "Instalar da Chrome Web Store",
+    "source": "Ver o código-fonte"
+  },
+  "support": {
+    "title": "Apoie o projeto",
+    "text": "Fico muito grato pelo seu apoio. Cada doação vai para o desenvolvimento dos projetos e para manter a infraestrutura 💙",
+    "button": "Apoiar"
+  },
+  "footer": {
+    "desc": "Saldo, gastos e orçamentos diários do DeepSeek Platform — direto na barra do navegador.",
+    "license": "— gratuito e de código aberto.",
+    "links": "Links",
+    "docs": "Documentação",
+    "features": "Recursos",
+    "contacts": "Contato",
+    "author": "Autor (rodevitsch)",
+    "bug": "Relatar um problema",
+    "bottom": "Open source under MIT License.",
+    "disclaimer": "Extensão não oficial, sem vínculo com o DeepSeek."
+  },
+  "alt": {
+    "popup": "Popup do DeepSeek Usage Monitor: saldo, gasto de hoje, orçamentos e gráfico",
+    "popupShot": "Popup com saldo, gasto de hoje e gráfico",
+    "optionsShot": "Página de configurações: ícone, atualização, orçamentos, sessão"
+  },
+  "a11y": {
+    "menu": "Menu",
+    "toTop": "Ao topo",
+    "lang": "Idioma",
+    "langCurrent": "Idioma atual"
+  },
+  "lang": {
+    "ru": "Russo"
+  }
+}

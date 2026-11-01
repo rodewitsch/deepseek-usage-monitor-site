@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DeepSeek Usage Monitor — Guthaben, Ausgaben und Budgets in der Chrome-Leiste</title>
+
+  <link rel="icon" type="image/png" sizes="128x128" href="../assets/images/icon128.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="../assets/images/icon48.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/icon16.png">
+
+  <meta name="description" data-i18n-content="meta.description" content="Расширение Chrome для DeepSeek Platform: баланс кошелька, траты за сегодня и по каждому API-ключу, график за 30 дней и дневные бюджеты — прямо в панели браузера. Без API-ключа и пароля.">
+  <meta name="keywords" content="DeepSeek, DeepSeek Platform, usage monitor, баланс DeepSeek, траты API, бюджеты API-ключей, расширение Chrome, developer tools">
+  <meta name="author" content="Dmitry Rodevich">
+  <link rel="canonical" href="https://deepseek-usage-monitor.rodevich.com/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" data-i18n-content="meta.ogTitle" content="DeepSeek Usage Monitor — расширение для Chrome">
+  <meta property="og:description" data-i18n-content="meta.ogDesc" content="Баланс, траты за сегодня и по API-ключам, график за 30 дней и дневные бюджеты DeepSeek — прямо в панели браузера.">
+  <meta property="og:image" content="assets/images/popup.png">
+  <meta property="og:url" content="https://deepseek-usage-monitor.rodevich.com/">
+  <meta property="og:locale" content="de_DE">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" data-i18n-content="meta.ogTitle" content="DeepSeek Usage Monitor — расширение для Chrome">
+  <meta name="twitter:description" data-i18n-content="meta.ogDesc" content="Баланс, траты за сегодня и по API-ключам, график за 30 дней и дневные бюджеты DeepSeek — прямо в панели браузера.">
+  <meta name="twitter:image" content="assets/images/popup.png">
+
+  <meta name="theme-color" content="#0a0a0f">
+
+  <link rel="alternate" hreflang="ru" href="https://deepseek-usage-monitor.rodevich.com/">
+  <link rel="alternate" hreflang="en" href="https://deepseek-usage-monitor.rodevich.com/en/">
+  <link rel="alternate" hreflang="de" href="https://deepseek-usage-monitor.rodevich.com/de/">
+  <link rel="alternate" hreflang="es" href="https://deepseek-usage-monitor.rodevich.com/es/">
+  <link rel="alternate" hreflang="fr" href="https://deepseek-usage-monitor.rodevich.com/fr/">
+  <link rel="alternate" hreflang="hi" href="https://deepseek-usage-monitor.rodevich.com/hi/">
+  <link rel="alternate" hreflang="id" href="https://deepseek-usage-monitor.rodevich.com/id/">
+  <link rel="alternate" hreflang="ja" href="https://deepseek-usage-monitor.rodevich.com/ja/">
+  <link rel="alternate" hreflang="pt-BR" href="https://deepseek-usage-monitor.rodevich.com/pt_BR/">
+  <link rel="alternate" hreflang="zh-CN" href="https://deepseek-usage-monitor.rodevich.com/zh_CN/">
+  <link rel="alternate" hreflang="x-default" href="https://deepseek-usage-monitor.rodevich.com/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "DeepSeek Usage Monitor",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Chrome 116+",
+    "url": "https://deepseek-usage-monitor.rodevich.com/",
+    "downloadUrl": "https://chromewebstore.google.com/detail/deepseek-usage-monitor/bgnofdddgahndpccpfnlddggfmcjbcco",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "author": { "@type": "Person", "name": "Dmitry Rodevich", "url": "https://rodevich.com" },
+    "description": "Баланс кошелька, траты за сегодня и по API-ключам, график за 30 дней и дневные бюджеты DeepSeek Platform прямо в панели браузера."
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ===== Background ===== -->
+  <div class="bg-glow" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <!-- ===== Nav ===== -->
+  <nav id="navbar">
+    <div class="container">
+      <a href="#" class="nav-brand">
+        <img src="../assets/images/icon48.png" alt="DeepSeek Usage Monitor">
+        DeepSeek Usage
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#features" data-i18n="nav.features">Funktionen</a></li>
+        <li><a href="#budgets" data-i18n="nav.budgets">Budgets</a></li>
+        <li><a href="#screenshots" data-i18n="nav.screenshots">Screenshots</a></li>
+        <li><a href="#privacy" data-i18n="nav.privacy">Datenschutz</a></li>
+        <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+        <li><a href="https://github.com/rodewitsch/deepseek-usage-monitor" target="_blank" rel="noopener">GitHub</a></li>
+        <li>
+          <a class="nav-cta" href="https://chromewebstore.google.com/detail/deepseek-usage-monitor/bgnofdddgahndpccpfnlddggfmcjbcco?authuser=0" target="_blank" rel="noopener" data-i18n="nav.install">Installieren</a>
+        </li>
+      </ul>
+      <div class="nav-side">
+        <div class="lang-switch" id="langSwitch">
+          <button type="button" class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Sprache" data-i18n-aria-label="a11y.lang">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18"/></svg>
+            <span class="lang-code">DE</span>
+          </button>
+          <div class="lang-menu" role="menu">
+            <a href="../" hreflang="ru">Русский</a>
+            <a href="../en/" hreflang="en">English</a>
+            <a href="../de/" hreflang="de" class="active" aria-current="true">Deutsch</a>
+            <a href="../es/" hreflang="es">Español</a>
+            <a href="../fr/" hreflang="fr">Français</a>
+            <a href="../hi/" hreflang="hi">हिन्दी</a>
+            <a href="../id/" hreflang="id">Bahasa Indonesia</a>
+            <a href="../ja/" hreflang="ja">日本語</a>
+            <a href="../pt_BR/" hreflang="pt_BR">Português (Brasil)</a>
+            <a href="../zh_CN/" hreflang="zh_CN">简体中文</a>
+          </div>
+        </div>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Menü" aria-expanded="false" data-i18n-aria-label="a11y.menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          <span data-i18n="hero.badge">Im Chrome Web Store verfügbar</span>
+        </div>
+
+        <h1 data-i18n-html="hero.title">Ihr <span class="grad">DeepSeek</span><br>unter Kontrolle</h1>
+
+        <p class="hero-sub" data-i18n="hero.sub">Wallet-Guthaben, Ausgaben heute und pro API-Key, 30-Tage-Diagramm und Tagesbudgets — direkt in der Browserleiste. Kein API-Key, kein Passwort, keine separate Anmeldung.</p>
+
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/deepseek-usage-monitor/bgnofdddgahndpccpfnlddggfmcjbcco?authuser=0" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12"/><path d="M6 10l6 6 6-6"/><path d="M4 20h16"/></svg>
+            <span data-i18n="hero.install">Aus dem Chrome Web Store installieren</span>
+          </a>
+          <a class="btn btn-ghost" href="https://github.com/rodewitsch/deepseek-usage-monitor" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span data-i18n="hero.source">Quellcode</span>
+          </a>
+        </div>
+
+        <ul class="hero-points">
+          <li data-i18n="hero.point1">Symbol in der Leiste mit Live-Zahlen</li>
+          <li data-i18n="hero.point2">Ausgaben pro API-Key im Blick</li>
+          <li data-i18n="hero.point3">Tagesbudgets und Benachrichtigungen</li>
+          <li data-i18n="hero.point4">Keine Telemetrie, keine Analytics</li>
+        </ul>
+      </div>
+
+      <div class="hero-visual">
+        <div class="browser-frame">
+          <div class="browser-bar">
+            <span class="traffic"></span><span class="traffic"></span><span class="traffic"></span>
+            <div class="url-bar">
+              <span class="badge-demo">14%</span>
+              platform.deepseek.com
+            </div>
+            <img class="ext-icon" src="../assets/images/icon32.png" alt="">
+          </div>
+          <div class="popup-wrap">
+            <img src="../assets/images/popup.png" alt="DeepSeek Usage Monitor popup" data-i18n-alt="alt.popup" width="432" height="700">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Features ===== -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label" data-i18n="features.label">Funktionen</span>
+        <h2 class="section-title" data-i18n="features.title">Alles zu den Ausgaben auf einen Blick</h2>
+        <p class="section-sub" data-i18n="features.sub">Die Erweiterung wiederholt nur die Anfragen der DeepSeek-Webkonsole und macht daraus ein übersichtliches Dashboard.</p>
+      </div>
+
+      <div class="features-grid">
+        <article class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M2 12h20"/></svg>
+          </div>
+          <h3 data-i18n="f1.title">Wallet-Guthaben</h3>
+          <p data-i18n="f1.desc">Bezahltes und Bonus-Guthaben getrennt. Liegt das Guthaben unter dem eingestellten Schwellenwert, wird das Symbol rot.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M17 7h4v4"/></svg>
+          </div>
+          <h3 data-i18n="f2.title">Ausgaben heute</h3>
+          <p data-i18n="f2.desc">Ausgaben und Token-Anzahl für den heutigen Tag. „Heute“ wird separat geladen, damit die Zahl bis zum Tageswechsel stimmt.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+          </div>
+          <h3 data-i18n="f3.title">Auswertung pro API-Key</h3>
+          <p data-i18n="f3.desc">Sie sehen, welcher Key am teuersten ist. Symbol und Diagramm lassen sich auf einen Key oder eine beliebige Auswahl beschränken.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+          </div>
+          <h3 data-i18n="f4.title">30-Tage-Diagramm</h3>
+          <p data-i18n="f4.desc">Tagesbalken für den gewählten Zeitraum. Klicken Sie Keys in der Liste an — die Balken werden zu gestapelten Segmenten mit Farblegende.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          </div>
+          <h3 data-i18n="f5.title">Symbol nach Ihrer Metrik</h3>
+          <p data-i18n="f5.desc">Ausgaben heute, Ausgaben im Zeitraum, Guthaben oder Token — Sie entscheiden, was das Symbol in der Leiste zeigt.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          </div>
+          <h3 data-i18n="f6.title">Automatische Aktualisierung</h3>
+          <p data-i18n="f6.desc">Die Daten aktualisieren sich im Hintergrund nach Zeitplan (standardmäßig jede Minute) oder gar nicht. Ein Button zum manuellen Aktualisieren ist immer da.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Budgets ===== -->
+  <section class="section section-alt" id="budgets">
+    <div class="container">
+      <div class="split">
+        <div class="split-text">
+          <span class="section-label" data-i18n="budgets.label">Budgets</span>
+          <h2 class="section-title" data-i18n-html="budgets.title">Schluss mit<br>zu hohen API-Kosten</h2>
+          <p class="split-sub" data-i18n="budgets.sub">Legen Sie ein Tagesbudget für das ganze Konto und je Key fest. Das Symbol wird grün, orange oder rot — je nachdem, welches Budget seiner Grenze am nächsten ist.</p>
+
+          <ul class="check-list">
+            <li data-i18n="budgets.li1">Gesamtbudget des Kontos und unabhängige Budgets pro Key</li>
+            <li data-i18n="budgets.li2">Einstellbare Warnschwelle (standardmäßig 90 %)</li>
+            <li data-i18n="budgets.li3">Systembenachrichtigung beim Annähern an und beim Überschreiten des Limits</li>
+            <li data-i18n="budgets.li4">Eine Benachrichtigung pro Tag und Budget — kein Spam</li>
+          </ul>
+
+          <div class="stat-row">
+            <div class="stat"><strong>11%</strong><span data-i18n="budgets.stat1">des Budgets verbraucht</span></div>
+            <div class="stat"><strong>$8.87</strong><span data-i18n="budgets.stat2">für heute übrig</span></div>
+            <div class="stat stat-danger"><strong>113%</strong><span data-i18n="budgets.stat3">Limit pro Key</span></div>
+          </div>
+        </div>
+
+        <div class="split-visual">
+          <div class="budget-card">
+            <div class="budget-head">
+              <span class="budget-title">Daily Budget · vscode_asus</span>
+              <span class="budget-pct ok">11%</span>
+            </div>
+            <div class="bar"><span class="bar-fill ok" style="width:11%"></span><span class="bar-warn" style="left:90%"></span></div>
+            <p class="budget-note" data-i18n="budgets.card1">$1.13 ausgegeben · $8.87 von $10.00 übrig</p>
+          </div>
+
+          <div class="budget-card">
+            <div class="budget-head">
+              <span class="budget-title" data-i18n="budgets.card2title">vscode_asus (pro Key)</span>
+              <span class="budget-pct danger">113%</span>
+            </div>
+            <div class="bar"><span class="bar-fill danger" style="width:100%"></span><span class="bar-warn" style="left:90%"></span></div>
+            <p class="budget-note" data-i18n="budgets.card2">$1.13 ausgegeben · $0.13 über dem Limit von $1.00</p>
+          </div>
+
+          <div class="budget-card">
+            <div class="budget-head">
+              <span class="budget-title" data-i18n="budgets.card3title">vscode_work (pro Key)</span>
+              <span class="budget-pct ok">13%</span>
+            </div>
+            <div class="bar"><span class="bar-fill ok" style="width:13%"></span><span class="bar-warn" style="left:90%"></span></div>
+            <p class="budget-note" data-i18n="budgets.card3">$0.13 ausgegeben · $0.87 von $1.00 übrig</p>
+          </div>
+
+          <div class="budget-card muted">
+            <div class="budget-head">
+              <span class="budget-title" data-i18n="budgets.card4title">vscode (pro Key)</span>
+              <span class="budget-pct">off</span>
+            </div>
+            <div class="bar"><span class="bar-fill" style="width:0"></span></div>
+            <p class="budget-note" data-i18n="budgets.card4">Budget für diesen Key ist aus</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== How it works ===== -->
+  <section class="section" id="how-it-works">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label" data-i18n="how.label">So funktioniert es</span>
+        <h2 class="section-title" data-i18n="how.title">Drei Schritte bis zum ersten Diagramm</h2>
+        <p class="section-sub" data-i18n="how.sub">Keine separate Registrierung und kein API-Key — die Erweiterung nutzt die bereits im Browser geöffnete Sitzung.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">01</span>
+          <h4 data-i18n="how.s1title">Erweiterung installieren</h4>
+          <p data-i18n="how.s1desc">Mit einem Klick aus dem Chrome Web Store. Chrome 116 oder neuer erforderlich.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">02</span>
+          <h4 data-i18n="how.s2title">platform.deepseek.com öffnen</h4>
+          <p data-i18n="how.s2desc">Anmelden — die Sitzung wird automatisch übernommen.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">03</span>
+          <h4 data-i18n="how.s3title">Auf das Symbol klicken</h4>
+          <p data-i18n="how.s3desc">Die erste Aktualisierung läuft automatisch. Danach aktualisieren sich die Daten im Hintergrund.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Screenshots ===== -->
+  <section class="section section-alt" id="screenshots">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label" data-i18n="shots.label">Screenshots</span>
+        <h2 class="section-title" data-i18n="shots.title">So sieht es aus</h2>
+        <p class="section-sub" data-i18n="shots.sub">Dunkle Oberfläche, dichtes Raster und kein einziger überflüssiger Button.</p>
+      </div>
+
+      <div class="shots">
+        <figure class="shot">
+          <div class="shot-body">
+            <img src="../assets/images/popup.png" alt="Popup: balance, spend today and chart" data-i18n-alt="alt.popupShot" loading="lazy" width="432" height="700">
+          </div>
+          <figcaption>
+            <h4 data-i18n="shots.popupTitle">Popup</h4>
+            <p data-i18n="shots.popupDesc">Guthaben, Ausgaben und Token heute, Budget-Balken, Diagramm und Key-Liste.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="shot">
+          <div class="shot-body">
+            <img src="../assets/images/options.png" alt="Options page: badge, refresh, budgets, session" data-i18n-alt="alt.optionsShot" loading="lazy" width="1280" height="1280">
+          </div>
+          <figcaption>
+            <h4 data-i18n="shots.optionsTitle">Einstellungen</h4>
+            <p data-i18n="shots.optionsDesc">Metrik des Symbols, Key-Auswahl, Aktualisierungsintervall, Aggregationszeitraum, Budgets und Schwellenwerte.</p>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Privacy ===== -->
+  <section class="section" id="privacy">
+    <div class="container">
+      <div class="privacy-box">
+        <div class="privacy-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <div>
+          <h2 data-i18n="privacy.title">Privat by default</h2>
+          <p data-i18n-html="privacy.text">Die Erweiterung spricht nur mit <code>platform.deepseek.com</code> und stellt dieselben rein lesenden Anfragen wie die DeepSeek-Webkonsole. Weder API-Key noch Passwort werden gespeichert — genutzt wird die bereits im Browser offene Sitzung. Alle Daten bleiben auf Ihrem Rechner: keine Telemetrie, keine Analytics, keine Werbung, keine Weitergabe an Dritte. Erweiterung entfernt — Daten weg.</p>
+        </div>
+      </div>
+
+      <div class="privacy-grid">
+        <div class="privacy-item">
+          <h4 data-i18n="privacy.i1title">3 Anfragen</h4>
+          <p data-i18n="privacy.i1desc">Nur die Endpunkte der Konsole, die für Guthaben und Ausgaben nötig sind.</p>
+        </div>
+        <div class="privacy-item">
+          <h4 data-i18n="privacy.i2title">0 fremde Domains</h4>
+          <p data-i18n="privacy.i2desc">Keine externen Server, CDNs oder Fehlerberichte.</p>
+        </div>
+        <div class="privacy-item">
+          <h4 data-i18n="privacy.i3title">Lokaler Speicher</h4>
+          <p data-i18n-html="privacy.i3desc">Einstellungen und zwischengespeicherte Zahlen liegen in <code>chrome.storage.local</code>.</p>
+        </div>
+        <div class="privacy-item">
+          <h4 data-i18n="privacy.i4title">Open Source</h4>
+          <p data-i18n="privacy.i4desc">MIT-Lizenz, Quellcode auf GitHub — jede Zeile prüfbar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="section section-alt" id="faq">
+    <div class="container container-narrow">
+      <div class="section-head">
+        <span class="section-label">FAQ</span>
+        <h2 class="section-title" data-i18n="faq.title">Häufige Fragen</h2>
+      </div>
+
+      <details class="faq" open>
+        <summary data-i18n="faq.q1">Brauche ich einen DeepSeek-API-Key?</summary>
+        <p data-i18n-html="faq.a1">Nein. Die Erweiterung nutzt die Sitzung, die im Browser auf <code>platform.deepseek.com</code> bereits offen ist. API-Key und Passwort werden weder abgefragt noch gespeichert.</p>
+      </details>
+
+      <details class="faq">
+        <summary data-i18n="faq.q2">Sendet die Erweiterung meine Daten irgendwohin?</summary>
+        <p data-i18n-html="faq.a2">Nein. Anfragen gehen nur an <code>platform.deepseek.com</code>, alles andere bleibt lokal. Keine Analytics, keine Telemetrie, keine Werbung.</p>
+      </details>
+
+      <details class="faq">
+        <summary data-i18n="faq.q3">Das Symbol zeigt „−“ — was tun?</summary>
+        <p data-i18n-html="faq.a3">Das WAF-Token von DeepSeek ist abgelaufen. Einmal <code>platform.deepseek.com</code> öffnen — das Token erneuert sich selbst, die Erweiterung übernimmt es bei der nächsten Aktualisierung. Tabs öffnet sie nie selbst.</p>
+      </details>
+
+      <details class="faq">
+        <summary data-i18n="faq.q4">Das Symbol zeigt „!“ oder einen Autorisierungsfehler</summary>
+        <p data-i18n="faq.a4">Die Sitzung wurde nicht gefunden oder ist abgelaufen. Auf der Plattform anmelden und dann in den Einstellungen „Sitzung neu erkennen“ anklicken.</p>
+      </details>
+
+      <details class="faq">
+        <summary data-i18n="faq.q5">Wie genau ist der Wert „heute“?</summary>
+        <p data-i18n="faq.a5">Die Tagesreihe der Plattform enthält den laufenden Tag nicht, daher nimmt die Erweiterung „heute“ aus der Stundenreihe und addiert es separat zum Diagramm.</p>
+      </details>
+
+      <details class="faq">
+        <summary data-i18n="faq.q6">Gibt es eine Firefox-Version?</summary>
+        <p data-i18n="faq.a6">Nur Chrome und Chromium-basierte Browser (Edge, Brave, Arc) — Chrome 116+ erforderlich.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta-section">
+    <div class="container">
+      <img class="cta-icon" src="../assets/images/icon128.png" alt="" width="72" height="72">
+      <h2 data-i18n="cta.title">Kostenlos installieren</h2>
+      <p data-i18n="cta.sub">Die Erweiterung ist komplett kostenlos und Open Source.</p>
+      <div class="cta-buttons">
+        <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/deepseek-usage-monitor/bgnofdddgahndpccpfnlddggfmcjbcco?authuser=0" target="_blank" rel="noopener" data-i18n="cta.install">Aus dem Chrome Web Store installieren</a>
+        <a class="btn btn-ghost" href="https://github.com/rodewitsch/deepseek-usage-monitor" target="_blank" rel="noopener" data-i18n="cta.source">Quellcode ansehen</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Support ===== -->
+  <section class="section support-section">
+    <div class="container container-narrow">
+      <h2 data-i18n="support.title">Projekt unterstützen</h2>
+      <p data-i18n="support.text">Ich freue mich über jede Unterstützung. Jede Spende fließt in die Weiterentwicklung der Projekte und den Betrieb der Infrastruktur 💙</p>
+      <a class="btn btn-primary" href="https://boosty.to/rodevich/donate" target="_blank" rel="noopener" data-i18n="support.button">Spenden</a>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="../assets/images/icon48.png" alt="" width="28" height="28">
+          DeepSeek Usage Monitor
+        </div>
+        <p data-i18n="footer.desc">Guthaben, Ausgaben und Tagesbudgets für die DeepSeek Platform — direkt in der Browserleiste.</p>
+        <p class="muted">
+          <a href="https://github.com/rodewitsch/deepseek-usage-monitor/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
+          <span data-i18n="footer.license">— kostenlos und Open Source.</span>
+        </p>
+      </div>
+      <div>
+        <h4 data-i18n="footer.links">Links</h4>
+        <a href="https://chromewebstore.google.com/detail/deepseek-usage-monitor/bgnofdddgahndpccpfnlddggfmcjbcco?authuser=0" target="_blank" rel="noopener">Chrome Web Store</a>
+        <a href="https://github.com/rodewitsch/deepseek-usage-monitor" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/rodewitsch/deepseek-usage-monitor/blob/main/README.md" target="_blank" rel="noopener" data-i18n="footer.docs">Dokumentation</a>
+        <a href="#features" data-i18n="footer.features">Funktionen</a>
+      </div>
+      <div>
+        <h4 data-i18n="footer.contacts">Kontakt</h4>
+        <a href="https://rodevich.com" target="_blank" rel="noopener" data-i18n="footer.author">Autor (rodevitsch)</a>
+        <a href="https://github.com/rodewitsch/deepseek-usage-monitor/issues" target="_blank" rel="noopener" data-i18n="footer.bug">Fehler melden</a>
+        <a href="https://boosty.to/rodevich" target="_blank" rel="noopener">Boosty</a>
+      </div>
+      <div class="footer-bottom">
+        © <span id="year">2026</span> DeepSeek Usage Monitor. <span data-i18n="footer.bottom">Open source under MIT License.</span>
+        <span data-i18n="footer.disclaimer">Inoffizielle Erweiterung, steht in keiner Verbindung zu DeepSeek.</span>
+      </div>
+    </div>
+  </footer>
+
+  <button id="goToTop" class="go-to-top" aria-label="Nach oben" data-i18n-aria-label="a11y.toTop">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <script src="../script.js"></script>
+</body>
+</html>

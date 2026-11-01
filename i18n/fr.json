@@ -1,0 +1,161 @@
+{
+  "locale": "fr_FR",
+  "htmlLang": "fr",
+  "meta": {
+    "title": "DeepSeek Usage Monitor — solde, dépenses et budgets DeepSeek dans la barre Chrome",
+    "description": "Extension Chrome pour DeepSeek Platform : solde du portefeuille, dépenses du jour et par clé API, graphique sur 30 jours et budgets quotidiens, directement dans la barre du navigateur. Sans clé API ni mot de passe.",
+    "ogTitle": "DeepSeek Usage Monitor — extension Chrome",
+    "ogDesc": "Solde, dépenses du jour et par clé, graphique sur 30 jours et budgets quotidiens pour DeepSeek, directement dans la barre du navigateur."
+  },
+  "nav": {
+    "features": "Fonctions",
+    "budgets": "Budgets",
+    "screenshots": "Captures",
+    "privacy": "Confidentialité",
+    "faq": "FAQ",
+    "install": "Installer"
+  },
+  "hero": {
+    "badge": "Disponible dans le Chrome Web Store",
+    "title": "Votre <span class=\"grad\">DeepSeek</span><br>sous contrôle",
+    "sub": "Solde du portefeuille, dépenses du jour et par clé API, graphique sur 30 jours et budgets quotidiens, directement dans la barre du navigateur. Sans clé API, sans mot de passe, sans connexion séparée.",
+    "install": "Installer depuis le Chrome Web Store",
+    "source": "Code source",
+    "point1": "Icône dans la barre avec des chiffres en direct",
+    "point2": "Suivi des dépenses par clé API",
+    "point3": "Budgets quotidiens et notifications",
+    "point4": "Aucune télémétrie, aucune analyse"
+  },
+  "features": {
+    "label": "Fonctions",
+    "title": "Tout sur vos dépenses en un coup d'œil",
+    "sub": "L'extension ne rejoue que les requêtes faites par la console web DeepSeek et les transforme en un tableau de bord lisible."
+  },
+  "f1": {
+    "title": "Solde du portefeuille",
+    "desc": "Solde payant et bonus séparés. Dès que le solde passe sous votre seuil, l'icône devient rouge."
+  },
+  "f2": {
+    "title": "Dépenses du jour",
+    "desc": "Dépenses et nombre de jetons du jour. « Aujourd'hui » est récupéré à part pour que le chiffre reste juste jusqu'au changement de jour."
+  },
+  "f3": {
+    "title": "Suivi par clé API",
+    "desc": "On voit quelle clé coûte le plus. L'icône et le graphique peuvent être limités à une clé ou à une sélection de clés."
+  },
+  "f4": {
+    "title": "Graphique sur 30 jours",
+    "desc": "Barres par jour sur la période choisie. Cliquez sur des clés dans la liste : les barres deviennent des segments empilés avec une légende de couleurs."
+  },
+  "f5": {
+    "title": "Icône selon votre métrique",
+    "desc": "Dépenses du jour, de la période, solde ou jetons : c'est vous qui décidez ce que montre l'icône de la barre."
+  },
+  "f6": {
+    "title": "Actualisation automatique",
+    "desc": "Les données se mettent à jour en arrière-plan selon un planning (toutes les minutes par défaut) ou pas du tout. Un bouton d'actualisation manuelle est toujours disponible."
+  },
+  "budgets": {
+    "label": "Budgets",
+    "title": "Arrêtez de payer trop cher<br>vos clés API",
+    "sub": "Définissez un budget quotidien pour tout le compte et un pour chaque clé. L'icône devient verte, orange ou rouge selon le budget le plus proche de sa limite.",
+    "li1": "Budget du compte et budgets indépendants par clé",
+    "li2": "Seuil d'alerte configurable (90 % par défaut)",
+    "li3": "Notification système à l'approche de la limite et en cas de dépassement",
+    "li4": "Une notification par jour et par budget — sans spam",
+    "stat1": "du budget utilisé",
+    "stat2": "restant aujourd'hui",
+    "stat3": "limite par clé",
+    "card1": "$1.13 dépensés · $8.87 restants sur $10.00",
+    "card2title": "vscode_asus (par clé)",
+    "card2": "$1.13 dépensés · dépassement de $0.13 sur $1.00",
+    "card3title": "vscode_work (par clé)",
+    "card3": "$0.13 dépensés · $0.87 restants sur $1.00",
+    "card4title": "vscode (par clé)",
+    "card4": "Budget désactivé pour cette clé"
+  },
+  "how": {
+    "label": "Comment ça marche",
+    "title": "Trois étapes jusqu'au premier graphique",
+    "sub": "Pas d'inscription séparée ni de clé API : l'extension réutilise la session déjà ouverte dans le navigateur.",
+    "s1title": "Installez l'extension",
+    "s1desc": "En un clic depuis le Chrome Web Store. Chrome 116 ou plus récent requis.",
+    "s2title": "Ouvrez platform.deepseek.com",
+    "s2desc": "Connectez-vous : la session est récupérée automatiquement.",
+    "s3title": "Cliquez sur l'icône",
+    "s3desc": "La première actualisation se fait toute seule. Ensuite, les données se mettent à jour en arrière-plan."
+  },
+  "shots": {
+    "label": "Captures d'écran",
+    "title": "À quoi ça ressemble",
+    "sub": "Interface sombre, grille dense et aucun bouton superflu.",
+    "popupTitle": "Fenêtre popup",
+    "popupDesc": "Solde, dépenses et jetons du jour, barres de budget, graphique et liste des clés API.",
+    "optionsTitle": "Réglages",
+    "optionsDesc": "Métrique de l'icône, choix des clés, intervalle d'actualisation, fenêtre d'agrégation, budgets et seuils."
+  },
+  "privacy": {
+    "title": "Confidentielle par défaut",
+    "text": "L'extension ne communique qu'avec <code>platform.deepseek.com</code> et effectue les mêmes requêtes en lecture seule que la console web DeepSeek. Aucune clé API ni mot de passe n'est stocké : elle réutilise la session déjà ouverte dans le navigateur. Toutes les données restent sur votre ordinateur : pas de télémétrie, d'analyse, de publicité ni de partage avec des tiers. Désinstallez l'extension et les données disparaissent.",
+    "i1title": "3 requêtes",
+    "i1desc": "Uniquement les endpoints de la console nécessaires au solde et aux dépenses.",
+    "i2title": "0 domaine externe",
+    "i2desc": "Aucun serveur tiers, CDN ou rapport d'erreur.",
+    "i3title": "Stockage local",
+    "i3desc": "Réglages et chiffres en cache vivent dans <code>chrome.storage.local</code>.",
+    "i4title": "Code ouvert",
+    "i4desc": "Licence MIT, sources sur GitHub : chaque ligne peut être vérifiée."
+  },
+  "faq": {
+    "title": "Questions fréquentes",
+    "q1": "Faut-il une clé API DeepSeek ?",
+    "a1": "Non. L'extension utilise la session déjà ouverte dans le navigateur sur <code>platform.deepseek.com</code>. Ni clé API ni mot de passe ne sont demandés ou stockés.",
+    "q2": "L'extension envoie-t-elle mes données ailleurs ?",
+    "a2": "Non. Les requêtes vont uniquement vers <code>platform.deepseek.com</code>, le reste reste en local. Pas d'analyse, de télémétrie ni de publicité.",
+    "q3": "L'icône affiche « − », que faire ?",
+    "a3": "Le jeton WAF de DeepSeek a expiré. Ouvrez une fois <code>platform.deepseek.com</code> : le jeton se renouvelle et l'extension le récupère à l'actualisation suivante. Elle n'ouvre jamais d'onglets d'elle-même.",
+    "q4": "L'icône affiche « ! » ou une erreur d'autorisation",
+    "a4": "La session est introuvable ou expirée. Connectez-vous à la plateforme, puis cliquez sur « Redétecter la session » dans les réglages de l'extension.",
+    "q5": "Quelle est la fiabilité du chiffre « aujourd'hui » ?",
+    "a5": "La série journalière de la plateforme n'inclut pas le jour en cours avant sa fin ; l'extension prend donc « aujourd'hui » dans la série horaire et l'ajoute séparément au graphique.",
+    "q6": "Y a-t-il une version Firefox ?",
+    "a6": "Pour l'instant uniquement Chrome et les navigateurs basés sur Chromium (Edge, Brave, Arc) — Chrome 116+ requis."
+  },
+  "cta": {
+    "title": "Installez gratuitement",
+    "sub": "L'extension est entièrement gratuite et open source.",
+    "install": "Installer depuis le Chrome Web Store",
+    "source": "Voir le code source"
+  },
+  "support": {
+    "title": "Soutenir le projet",
+    "text": "Votre soutien me fait très plaisir. Chaque don sert au développement des projets et au maintien de l'infrastructure 💙",
+    "button": "Soutenir"
+  },
+  "footer": {
+    "desc": "Solde, dépenses et budgets quotidiens de DeepSeek Platform, directement dans la barre du navigateur.",
+    "license": "— gratuit et open source.",
+    "links": "Liens",
+    "docs": "Documentation",
+    "features": "Fonctions",
+    "contacts": "Contact",
+    "author": "Auteur (rodevitsch)",
+    "bug": "Signaler un problème",
+    "bottom": "Open source under MIT License.",
+    "disclaimer": "Extension non officielle, sans lien avec DeepSeek."
+  },
+  "alt": {
+    "popup": "Popup de DeepSeek Usage Monitor : solde, dépenses du jour, budgets et graphique",
+    "popupShot": "Popup avec solde, dépenses du jour et graphique",
+    "optionsShot": "Page de réglages : icône, actualisation, budgets, session"
+  },
+  "a11y": {
+    "menu": "Menu",
+    "toTop": "Haut de page",
+    "lang": "Langue",
+    "langCurrent": "Langue actuelle"
+  },
+  "lang": {
+    "ru": "Russe"
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "locale": "es_ES",
+  "htmlLang": "es",
+  "meta": {
+    "title": "DeepSeek Usage Monitor — saldo, gasto y presupuestos de DeepSeek en la barra de Chrome",
+    "description": "Extensión de Chrome para DeepSeek Platform: saldo de la cartera, gasto de hoy y por clave API, gráfico de 30 días y presupuestos diarios, directamente en la barra del navegador. Sin clave API ni contraseña.",
+    "ogTitle": "DeepSeek Usage Monitor — extensión de Chrome",
+    "ogDesc": "Saldo, gasto de hoy y por clave, gráfico de 30 días y presupuestos diarios de DeepSeek, directamente en la barra del navegador."
+  },
+  "nav": {
+    "features": "Funciones",
+    "budgets": "Presupuestos",
+    "screenshots": "Capturas",
+    "privacy": "Privacidad",
+    "faq": "FAQ",
+    "install": "Instalar"
+  },
+  "hero": {
+    "badge": "Disponible en Chrome Web Store",
+    "title": "Tu <span class=\"grad\">DeepSeek</span><br>bajo control",
+    "sub": "Saldo de la cartera, gasto de hoy y por cada clave API, gráfico de 30 días y presupuestos diarios, directamente en la barra del navegador. Sin clave API, sin contraseña y sin iniciar sesión aparte.",
+    "install": "Instalar desde Chrome Web Store",
+    "source": "Código fuente",
+    "point1": "Icono en la barra con cifras en vivo",
+    "point2": "Gasto por cada clave API",
+    "point3": "Presupuestos diarios y notificaciones",
+    "point4": "Sin telemetría ni analíticas"
+  },
+  "features": {
+    "label": "Funciones",
+    "title": "Todo sobre tu gasto de un vistazo",
+    "sub": "La extensión repite solo las peticiones que hace la propia consola web de DeepSeek y las convierte en un panel legible."
+  },
+  "f1": {
+    "title": "Saldo de la cartera",
+    "desc": "Saldo pagado y de bonificación por separado. Cuando queda menos que tu umbral, el icono se pone rojo."
+  },
+  "f2": {
+    "title": "Gasto de hoy",
+    "desc": "Gasto del día y número de tokens. «Hoy» se consulta aparte para que la cifra sea exacta hasta el cambio de día."
+  },
+  "f3": {
+    "title": "Control por clave API",
+    "desc": "Se ve qué clave sale más cara. El icono y el gráfico se pueden limitar a una clave o a cualquier selección."
+  },
+  "f4": {
+    "title": "Gráfico de 30 días",
+    "desc": "Barras por día del periodo elegido. Haz clic en las claves de la lista y las barras pasan a ser segmentos apilados con leyenda de colores."
+  },
+  "f5": {
+    "title": "Icono según tu métrica",
+    "desc": "Gasto de hoy, gasto del periodo, saldo o tokens: tú decides qué muestra el icono de la barra."
+  },
+  "f6": {
+    "title": "Actualización automática",
+    "desc": "Los datos se actualizan en segundo plano según un horario (cada minuto por defecto) o no se actualizan. Siempre hay un botón para actualizar a mano."
+  },
+  "budgets": {
+    "label": "Presupuestos",
+    "title": "Deja de pagar de más<br>por las claves API",
+    "sub": "Define un presupuesto diario para toda la cuenta y otro para cada clave. El icono se pone verde, naranja o rojo según el presupuesto más cercano a su límite.",
+    "li1": "Presupuesto de la cuenta y presupuestos independientes por clave",
+    "li2": "Umbral de aviso configurable (90 % por defecto)",
+    "li3": "Notificación del sistema al acercarse al límite y al superarlo",
+    "li4": "Una notificación al día por presupuesto, sin spam",
+    "stat1": "del presupuesto usado",
+    "stat2": "disponible hoy",
+    "stat3": "límite por clave",
+    "card1": "$1.13 gastados · quedan $8.87 de $10.00",
+    "card2title": "vscode_asus (por clave)",
+    "card2": "$1.13 gastados · excedido en $0.13 sobre $1.00",
+    "card3title": "vscode_work (por clave)",
+    "card3": "$0.13 gastados · quedan $0.87 de $1.00",
+    "card4title": "vscode (por clave)",
+    "card4": "El presupuesto de esta clave está desactivado"
+  },
+  "how": {
+    "label": "Cómo funciona",
+    "title": "Tres pasos hasta tu primer gráfico",
+    "sub": "No hace falta registrarse aparte ni una clave API: se reutiliza la sesión que ya está abierta en el navegador.",
+    "s1title": "Instala la extensión",
+    "s1desc": "Un clic desde Chrome Web Store. Necesita Chrome 116 o superior.",
+    "s2title": "Abre platform.deepseek.com",
+    "s2desc": "Inicia sesión: la sesión se detecta automáticamente.",
+    "s3title": "Haz clic en el icono",
+    "s3desc": "La primera actualización ocurre sola. Después los datos se actualizan en segundo plano."
+  },
+  "shots": {
+    "label": "Capturas",
+    "title": "Así se ve",
+    "sub": "Interfaz oscura, rejilla densa y ni un solo botón de más.",
+    "popupTitle": "Ventana emergente",
+    "popupDesc": "Saldo, gasto y tokens de hoy, barras de presupuesto, gráfico y lista de claves API.",
+    "optionsTitle": "Ajustes",
+    "optionsDesc": "Métrica del icono, selección de claves, intervalo de actualización, ventana de agregación, presupuestos y umbrales."
+  },
+  "privacy": {
+    "title": "Privada por defecto",
+    "text": "La extensión solo se comunica con <code>platform.deepseek.com</code> y hace las mismas peticiones de solo lectura que la consola web de DeepSeek. No guarda ninguna clave API ni contraseña: reutiliza la sesión ya abierta en el navegador. Todos los datos están únicamente en tu ordenador: sin telemetría, analíticas, publicidad ni cesión a terceros. Si desinstalas la extensión, los datos desaparecen.",
+    "i1title": "3 peticiones",
+    "i1desc": "Solo los endpoints de la consola necesarios para el saldo y el gasto.",
+    "i2title": "0 dominios externos",
+    "i2desc": "Sin servidores de terceros, CDN ni informes de errores.",
+    "i3title": "Almacenamiento local",
+    "i3desc": "Los ajustes y las cifras en caché viven en <code>chrome.storage.local</code>.",
+    "i4title": "Código abierto",
+    "i4desc": "Licencia MIT y código en GitHub: se puede revisar cada línea."
+  },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "q1": "¿Necesito una clave API de DeepSeek?",
+    "a1": "No. La extensión usa la sesión que ya está abierta en el navegador en <code>platform.deepseek.com</code>. Ni la clave API ni la contraseña se solicitan o almacenan.",
+    "q2": "¿La extensión envía mis datos a otro sitio?",
+    "a2": "No. Las peticiones van solo a <code>platform.deepseek.com</code>; lo demás se queda en local. Sin analíticas, telemetría ni publicidad.",
+    "q3": "El icono muestra «−», ¿qué hago?",
+    "a3": "Ha caducado el token WAF de DeepSeek. Abre <code>platform.deepseek.com</code> una vez: el token se renueva solo y la extensión lo toma en la siguiente actualización. Nunca abre pestañas por su cuenta.",
+    "q4": "El icono muestra «!» o un error de autorización",
+    "a4": "No se encontró la sesión o ha caducado. Inicia sesión en la plataforma y pulsa «Redetectar sesión» en los ajustes de la extensión.",
+    "q5": "¿Cuánto se puede fiar de la cifra «hoy»?",
+    "a5": "La serie diaria de la plataforma no incluye el día en curso hasta que acaba, así que la extensión toma «hoy» de la serie horaria y la añade por separado al gráfico.",
+    "q6": "¿Hay versión para Firefox?",
+    "a6": "Por ahora solo Chrome y navegadores basados en Chromium (Edge, Brave, Arc): se requiere Chrome 116+."
+  },
+  "cta": {
+    "title": "Instala gratis",
+    "sub": "La extensión es completamente gratuita y de código abierto.",
+    "install": "Instalar desde Chrome Web Store",
+    "source": "Ver el código"
+  },
+  "support": {
+    "title": "Apoya el proyecto",
+    "text": "Agradeceré mucho tu apoyo. Cada donación se destina al desarrollo de los proyectos y a mantener la infraestructura 💙",
+    "button": "Apoyar"
+  },
+  "footer": {
+    "desc": "Saldo, gasto y presupuestos diarios de DeepSeek Platform, directamente en la barra del navegador.",
+    "license": "— gratis y de código abierto.",
+    "links": "Enlaces",
+    "docs": "Documentación",
+    "features": "Funciones",
+    "contacts": "Contacto",
+    "author": "Autor (rodevitsch)",
+    "bug": "Informar de un error",
+    "bottom": "Open source under MIT License.",
+    "disclaimer": "Extensión no oficial, sin relación con DeepSeek."
+  },
+  "alt": {
+    "popup": "Ventana emergente de DeepSeek Usage Monitor: saldo, gasto de hoy, presupuestos y gráfico",
+    "popupShot": "Ventana emergente con saldo, gasto de hoy y gráfico",
+    "optionsShot": "Página de ajustes: icono, actualización, presupuestos, sesión"
+  },
+  "a11y": {
+    "menu": "Menú",
+    "toTop": "Arriba",
+    "lang": "Idioma",
+    "langCurrent": "Idioma actual"
+  },
+  "lang": {
+    "ru": "Ruso"
+  }
+}

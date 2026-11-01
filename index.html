@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DeepSeek Usage Monitor — баланс, траты и бюджеты DeepSeek в панели Chrome</title>
+
+  <link rel="icon" type="image/png" sizes="128x128" href="assets/images/icon128.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/images/icon48.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/icon16.png">
+
+  <meta name="description" data-i18n-content="meta.description" content="Расширение Chrome для DeepSeek Platform: баланс кошелька, траты за сегодня и по каждому API-ключу, график за 30 дней и дневные бюджеты — прямо в панели браузера. Без API-ключа и пароля.">
+  <meta name="keywords" content="DeepSeek, DeepSeek Platform, usage monitor, баланс DeepSeek, траты API, бюджеты API-ключей, расширение Chrome, developer tools">
+  <meta name="author" content="Dmitry Rodevich">
+  <link rel="canonical" href="https://deepseek-usage-monitor.rodevich.com/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" data-i18n-content="meta.ogTitle" content="DeepSeek Usage Monitor — расширение для Chrome">
+  <meta property="og:description" data-i18n-content="meta.ogDesc" content="Баланс, траты за сегодня и по API-ключам, график за 30 дней и дневные бюджеты DeepSeek — прямо в панели браузера.">
+  <meta property="og:image" content="assets/images/popup.png">
+  <meta property="og:url" content="https://deepseek-usage-monitor.rodevich.com/">
+  <meta property="og:locale" content="ru_RU">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" data-i18n-content="meta.ogTitle" content="DeepSeek Usage Monitor — расширение для Chrome">
+  <meta name="twitter:description" data-i18n-content="meta.ogDesc" content="Баланс, траты за сегодня и по API-ключам, график за 30 дней и дневные бюджеты DeepSeek — прямо в панели браузера.">
+  <meta name="twitter:image" content="assets/images/popup.png">
+
+  <meta name="theme-color" content="#0a0a0f">
+
+  <link rel="alternate" hreflang="ru" href="https://deepseek-usage-monitor.rodevich.com/">
+  <link rel="alternate" hreflang="en" href="https://deepseek-usage-monitor.rodevich.com/en/">
+  <link rel="alternate" hreflang="de" href="https://deepseek-usage-monitor.rodevich.com/de/">
+  <link rel="alternate" hreflang="es" href="https://deepseek-usage-monitor.rodevich.com/es/">
+  <link rel="alternate" hreflang="fr" href="https://deepseek-usage-monitor.rodevich.com/fr/">
+  <link rel="alternate" hreflang="hi" href="https://deepseek-usage-monitor.rodevich.com/hi/">
+  <link rel="alternate" hreflang="id" href="https://deepseek-usage-monitor.rodevich.com/id/">
+  <link rel="alternate" hreflang="ja" href="https://deepseek-usage-monitor.rodevich.com/ja/">
+  <link rel="alternate" hreflang="pt-BR" href="https://deepseek-usage-monitor.rodevich.com/pt_BR/">
+  <link rel="alternate" hreflang="zh-CN" href="https://deepseek-usage-monitor.rodevich.com/zh_CN/">
+  <link rel="alternate" hreflang="x-default" href="https://deepseek-usage-monitor.rodevich.com/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "DeepSeek Usage Monitor",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Chrome 116+",
+    "url": "https://deepseek-usage-monitor.rodevich.com/",
+    "downloadUrl": "https://chromewebstore.google.com/detail/deepseek-usage-monitor/bgnofdddgahndpccpfnlddggfmcjbcco",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "author": { "@type": "Person", "name": "Dmitry Rodevich", "url": "https://rodevich.com" },
+    "description": "Баланс кошелька, траты за сегодня и по API-ключам, график за 30 дней и дневные бюджеты DeepSeek Platform прямо в панели браузера."
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ===== Background ===== -->
+  <div class="bg-glow" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <!-- ===== Nav ===== -->
+  <nav id="navbar">
+    <div class="container">
+      <a href="#" class="nav-brand">
+        <img src="assets/images/icon48.png" alt="DeepSeek Usage Monitor">
+        DeepSeek Usage
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#features" data-i18n="nav.features">Возможности</a></li>
+        <li><a href="#budgets" data-i18n="nav.budgets">Бюджеты</a></li>
+        <li><a href="#screenshots" data-i18n="nav.screenshots">Скриншоты</a></li>
+        <li><a href="#privacy" data-i18n="nav.privacy">Приватность</a></li>
+        <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+        <li><a href="https://github.com/rodewitsch/deepseek-usage-monitor" target="_blank" rel="noopener">GitHub</a></li>
+        <li>
+          <a class="nav-cta" href="https://chromewebstore.google.com/detail/deepseek-usage-monitor/bgnofdddgahndpccpfnlddggfmcjbcco?authuser=0" target="_blank" rel="noopener" data-i18n="nav.install">Установить</a>
+        </li>
+      </ul>
+      <div class="nav-side">
+        <div class="lang-switch" id="langSwitch">
+          <button type="button" class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Язык" data-i18n-aria-label="a11y.lang">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18"/></svg>
+            <span class="lang-code">RU</span>
+          </button>
+          <div class="lang-menu" role="menu">
+            <a href="./" hreflang="ru" class="active" aria-current="true">Русский</a>
+            <a href="en/" hreflang="en">English</a>
+            <a href="de/" hreflang="de">Deutsch</a>
+            <a href="es/" hreflang="es">Español</a>
+            <a href="fr/" hreflang="fr">Français</a>
+            <a href="hi/" hreflang="hi">हिन्दी</a>
+            <a href="id/" hreflang="id">Bahasa Indonesia</a>
+            <a href="ja/" hreflang="ja">日本語</a>
+            <a href="pt_BR/" hreflang="pt_BR">Português (Brasil)</a>
+            <a href="zh_CN/" hreflang="zh_CN">简体中文</a>
+          </div>
+        </div>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Меню" aria-expanded="false" data-i18n-aria-label="a11y.menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          <span data-i18n="hero.badge">Доступно в Chrome Web Store</span>
+        </div>
+
+        <h1 data-i18n-html="hero.title">Ваш <span class="grad">DeepSeek</span><br>под контролем</h1>
+
+        <p class="hero-sub" data-i18n="hero.sub">Баланс кошелька, траты за сегодня и по каждому API-ключу, график за 30 дней и дневные бюджеты — прямо в панели браузера. Без API-ключа, без пароля, без отдельного входа.</p>
+
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/deepseek-usage-monitor/bgnofdddgahndpccpfnlddggfmcjbcco?authuser=0" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12"/><path d="M6 10l6 6 6-6"/><path d="M4 20h16"/></svg>
+            <span data-i18n="hero.install">Установить из Chrome Web Store</span>
+          </a>
+          <a class="btn btn-ghost" href="https://github.com/rodewitsch/deepseek-usage-monitor" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span data-i18n="hero.source">Исходный код</span>
+          </a>
+        </div>
+
+        <ul class="hero-points">
+          <li data-i18n="hero.point1">Значок в тулбаре с живыми цифрами</li>
+          <li data-i18n="hero.point2">Учёт расходов по каждому API-ключу</li>
+          <li data-i18n="hero.point3">Дневные бюджеты и уведомления</li>
+          <li data-i18n="hero.point4">Никакой телеметрии и аналитики</li>
+        </ul>
+      </div>
+
+      <div class="hero-visual">
+        <div class="browser-frame">
+          <div class="browser-bar">
+            <span class="traffic"></span><span class="traffic"></span><span class="traffic"></span>
+            <div class="url-bar">
+              <span class="badge-demo">14%</span>
+              platform.deepseek.com
+            </div>
+            <img class="ext-icon" src="assets/images/icon32.png" alt="">
+          </div>
+          <div class="popup-wrap">
+            <img src="assets/images/popup.png" alt="DeepSeek Usage Monitor popup" data-i18n-alt="alt.popup" width="432" height="700">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Features ===== -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label" data-i18n="features.label">Возможности</span>
+        <h2 class="section-title" data-i18n="features.title">Всё о расходах — с одного взгляда</h2>
+        <p class="section-sub" data-i18n="features.sub">Расширение повторяет только те запросы, которые делает сама веб-консоль DeepSeek, и собирает из них понятный дашборд.</p>
+      </div>
+
+      <div class="features-grid">
+        <article class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M2 12h20"/></svg>
+          </div>
+          <h3 data-i18n="f1.title">Баланс кошелька</h3>
+          <p data-i18n="f1.desc">Основной и бонусный баланс отдельно. Когда средств остаётся ниже вашего порога — значок краснеет.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M17 7h4v4"/></svg>
+          </div>
+          <h3 data-i18n="f2.title">Траты за сегодня</h3>
+          <p data-i18n="f2.desc">Сумма расхода и количество токенов за текущий день. «Сегодня» считается отдельно, чтобы цифра была точной до перехода суток.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+          </div>
+          <h3 data-i18n="f3.title">Учёт по API-ключам</h3>
+          <p data-i18n="f3.desc">Видно, какой ключ обходится дороже всего. Значок и график можно ограничить одним ключом или любой выборкой.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+          </div>
+          <h3 data-i18n="f4.title">График за 30 дней</h3>
+          <p data-i18n="f4.desc">Столбцы по дням за выбранное окно. Кликните по ключам в списке — и столбцы станут стековыми с легендой по цветам.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          </div>
+          <h3 data-i18n="f5.title">Значок по вашей метрике</h3>
+          <p data-i18n="f5.desc">Траты за сегодня, траты за период, баланс или токены — что именно показывать на иконке, решаете вы.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          </div>
+          <h3 data-i18n="f6.title">Автообновление</h3>
+          <p data-i18n="f6.desc">Данные обновляются в фоне по расписанию (по умолчанию раз в минуту) — или отключаются вовсе. Есть кнопка ручного обновления.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Budgets ===== -->
+  <section class="section section-alt" id="budgets">
+    <div class="container">
+      <div class="split">
+        <div class="split-text">
+          <span class="section-label" data-i18n="budgets.label">Бюджеты</span>
+          <h2 class="section-title" data-i18n-html="budgets.title">Не переплачивайте<br>за API-ключи</h2>
+          <p class="split-sub" data-i18n="budgets.sub">Задайте дневной бюджет на весь аккаунт и отдельно на каждый ключ. Значок становится зелёным, оранжевым или красным — по тому бюджету, который ближе к лимиту.</p>
+
+          <ul class="check-list">
+            <li data-i18n="budgets.li1">Общий бюджет аккаунта и независимые бюджеты по ключам</li>
+            <li data-i18n="budgets.li2">Настраиваемый порог предупреждения (по умолчанию 90 %)</li>
+            <li data-i18n="budgets.li3">Системное уведомление при приближении к лимиту и при превышении</li>
+            <li data-i18n="budgets.li4">Одно уведомление в день на каждый бюджет — без спама</li>
+          </ul>
+
+          <div class="stat-row">
+            <div class="stat"><strong>11%</strong><span data-i18n="budgets.stat1">бюджет использован</span></div>
+            <div class="stat"><strong>$8.87</strong><span data-i18n="budgets.stat2">осталось на сегодня</span></div>
+            <div class="stat stat-danger"><strong>113%</strong><span data-i18n="budgets.stat3">лимит по ключу</span></div>
+          </div>
+        </div>
+
+        <div class="split-visual">
+          <div class="budget-card">
+            <div class="budget-head">
+              <span class="budget-title">Daily Budget · vscode_asus</span>
+              <span class="budget-pct ok">11%</span>
+            </div>
+            <div class="bar"><span class="bar-fill ok" style="width:11%"></span><span class="bar-warn" style="left:90%"></span></div>
+            <p class="budget-note" data-i18n="budgets.card1">$1.13 потрачено · $8.87 осталось из $10.00</p>
+          </div>
+
+          <div class="budget-card">
+            <div class="budget-head">
+              <span class="budget-title" data-i18n="budgets.card2title">vscode_asus (по ключу)</span>
+              <span class="budget-pct danger">113%</span>
+            </div>
+            <div class="bar"><span class="bar-fill danger" style="width:100%"></span><span class="bar-warn" style="left:90%"></span></div>
+            <p class="budget-note" data-i18n="budgets.card2">$1.13 потрачено · перерасход $0.13 из $1.00</p>
+          </div>
+
+          <div class="budget-card">
+            <div class="budget-head">
+              <span class="budget-title" data-i18n="budgets.card3title">vscode_work (по ключу)</span>
+              <span class="budget-pct ok">13%</span>
+            </div>
+            <div class="bar"><span class="bar-fill ok" style="width:13%"></span><span class="bar-warn" style="left:90%"></span></div>
+            <p class="budget-note" data-i18n="budgets.card3">$0.13 потрачено · $0.87 осталось из $1.00</p>
+          </div>
+
+          <div class="budget-card muted">
+            <div class="budget-head">
+              <span class="budget-title" data-i18n="budgets.card4title">vscode (по ключу)</span>
+              <span class="budget-pct">off</span>
+            </div>
+            <div class="bar"><span class="bar-fill" style="width:0"></span></div>
+            <p class="budget-note" data-i18n="budgets.card4">Бюджет для этого ключа отключён</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== How it works ===== -->
+  <section class="section" id="how-it-works">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label" data-i18n="how.label">Как это работает</span>
+        <h2 class="section-title" data-i18n="how.title">Три шага до первого графика</h2>
+        <p class="section-sub" data-i18n="how.sub">Отдельной регистрации и API-ключа не нужно — используется сессия, которая уже открыта в браузере.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">01</span>
+          <h4 data-i18n="how.s1title">Установите расширение</h4>
+          <p data-i18n="how.s1desc">Из Chrome Web Store в один клик. Нужен Chrome 116 или новее.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">02</span>
+          <h4 data-i18n="how.s2title">Откройте platform.deepseek.com</h4>
+          <p data-i18n="how.s2desc">Войдите в аккаунт — сессия подхватится автоматически.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">03</span>
+          <h4 data-i18n="how.s3title">Нажмите на значок</h4>
+          <p data-i18n="how.s3desc">Первое обновление произойдёт само. Дальше данные обновляются в фоне.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Screenshots ===== -->
+  <section class="section section-alt" id="screenshots">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label" data-i18n="shots.label">Скриншоты</span>
+        <h2 class="section-title" data-i18n="shots.title">Как это выглядит</h2>
+        <p class="section-sub" data-i18n="shots.sub">Тёмный интерфейс, плотная сетка и ни одной лишней кнопки.</p>
+      </div>
+
+      <div class="shots">
+        <figure class="shot">
+          <div class="shot-body">
+            <img src="assets/images/popup.png" alt="Popup: balance, spend today and chart" data-i18n-alt="alt.popupShot" loading="lazy" width="432" height="700">
+          </div>
+          <figcaption>
+            <h4 data-i18n="shots.popupTitle">Попап</h4>
+            <p data-i18n="shots.popupDesc">Баланс, траты и токены за сегодня, шкалы бюджетов, график и список API-ключей.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="shot">
+          <div class="shot-body">
+            <img src="assets/images/options.png" alt="Options page: badge, refresh, budgets, session" data-i18n-alt="alt.optionsShot" loading="lazy" width="1280" height="1280">
+          </div>
+          <figcaption>
+            <h4 data-i18n="shots.optionsTitle">Настройки</h4>
+            <p data-i18n="shots.optionsDesc">Метрика значка, выбор ключей, интервал обновления, окно агрегации, бюджеты и пороги.</p>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Privacy ===== -->
+  <section class="section" id="privacy">
+    <div class="container">
+      <div class="privacy-box">
+        <div class="privacy-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <div>
+          <h2 data-i18n="privacy.title">Приватность по умолчанию</h2>
+          <p data-i18n-html="privacy.text">Расширение обращается только к <code>platform.deepseek.com</code> и делает те же запросы только на чтение, что и веб-консоль DeepSeek. Никакого API-ключа и пароля не сохраняется — используется сессия, которая уже открыта в браузере. Данные лежат исключительно на вашем компьютере: нет телеметрии, аналитики, рекламы и передачи третьим лицам. Удалили расширение — данные удалены.</p>
+        </div>
+      </div>
+
+      <div class="privacy-grid">
+        <div class="privacy-item">
+          <h4 data-i18n="privacy.i1title">3 запроса</h4>
+          <p data-i18n="privacy.i1desc">Только те эндпоинты консоли, которые нужны для баланса и расходов.</p>
+        </div>
+        <div class="privacy-item">
+          <h4 data-i18n="privacy.i2title">0 внешних доменов</h4>
+          <p data-i18n="privacy.i2desc">Никаких сторонних серверов, CDN и отчётов об ошибках.</p>
+        </div>
+        <div class="privacy-item">
+          <h4 data-i18n="privacy.i3title">Локальное хранилище</h4>
+          <p data-i18n-html="privacy.i3desc">Настройки и кэш цифр хранятся в <code>chrome.storage.local</code>.</p>
+        </div>
+        <div class="privacy-item">
+          <h4 data-i18n="privacy.i4title">Открытый код</h4>
+          <p data-i18n="privacy.i4desc">MIT-лицензия, исходники на GitHub — можно проверить каждую строку.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="section section-alt" id="faq">
+    <div class="container container-narrow">
+      <div class="section-head">
+        <span class="section-label">FAQ</span>
+        <h2 class="section-title" data-i18n="faq.title">Частые вопросы</h2>
+      </div>
+
+      <details class="faq" open>
+        <summary data-i18n="faq.q1">Нужен ли API-ключ DeepSeek?</summary>
+        <p data-i18n-html="faq.a1">Нет. Расширение использует сессию, которая уже открыта в браузере на <code>platform.deepseek.com</code>. API-ключ и пароль не запрашиваются и не хранятся.</p>
+      </details>
+
+      <details class="faq">
+        <summary data-i18n="faq.q2">Расширение отправляет мои данные кому-то ещё?</summary>
+        <p data-i18n-html="faq.a2">Нет. Запросы идут только на <code>platform.deepseek.com</code>, всё остальное хранится локально. Нет аналитики, телеметрии и рекламы.</p>
+      </details>
+
+      <details class="faq">
+        <summary data-i18n="faq.q3">Значок показывает «−», что делать?</summary>
+        <p data-i18n-html="faq.a3">Истёк WAF-токен DeepSeek. Достаточно один раз открыть <code>platform.deepseek.com</code> — токен обновится сам, и расширение подхватит его при следующем обновлении. Вкладки само оно не открывает.</p>
+      </details>
+
+      <details class="faq">
+        <summary data-i18n="faq.q4">Значок показывает «!» или ошибку авторизации</summary>
+        <p data-i18n="faq.a4">Сессия не найдена или устарела. Войдите в платформу, затем нажмите «Переопределить сессию» в настройках расширения.</p>
+      </details>
+
+      <details class="faq">
+        <summary data-i18n="faq.q5">Насколько точна цифра «за сегодня»?</summary>
+        <p data-i18n="faq.a5">Дневная серия платформы не содержит текущих суток до их завершения, поэтому расширение берёт «сегодня» из почасовой серии и прибавляет к графику отдельно.</p>
+      </details>
+
+      <details class="faq">
+        <summary data-i18n="faq.q6">Есть ли версия для Firefox?</summary>
+        <p data-i18n="faq.a6">Пока только Chrome и браузеры на Chromium (Edge, Brave, Arc) — нужен Chrome 116+.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta-section">
+    <div class="container">
+      <img class="cta-icon" src="assets/images/icon128.png" alt="" width="72" height="72">
+      <h2 data-i18n="cta.title">Установите бесплатно</h2>
+      <p data-i18n="cta.sub">Расширение полностью бесплатное и с открытым исходным кодом.</p>
+      <div class="cta-buttons">
+        <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/deepseek-usage-monitor/bgnofdddgahndpccpfnlddggfmcjbcco?authuser=0" target="_blank" rel="noopener" data-i18n="cta.install">Установить из Chrome Web Store</a>
+        <a class="btn btn-ghost" href="https://github.com/rodewitsch/deepseek-usage-monitor" target="_blank" rel="noopener" data-i18n="cta.source">Посмотреть исходный код</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Support ===== -->
+  <section class="section support-section">
+    <div class="container container-narrow">
+      <h2 data-i18n="support.title">Поддержать проект</h2>
+      <p data-i18n="support.text">Буду рад вашей поддержке. Каждое пожертвование идёт на развитие проектов и поддержание инфраструктуры 💙</p>
+      <a class="btn btn-primary" href="https://boosty.to/rodevich/donate" target="_blank" rel="noopener" data-i18n="support.button">Поддержать</a>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="assets/images/icon48.png" alt="" width="28" height="28">
+          DeepSeek Usage Monitor
+        </div>
+        <p data-i18n="footer.desc">Баланс, траты и дневные бюджеты DeepSeek Platform — прямо в панели браузера.</p>
+        <p class="muted">
+          <a href="https://github.com/rodewitsch/deepseek-usage-monitor/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
+          <span data-i18n="footer.license">— бесплатно и с открытым исходным кодом.</span>
+        </p>
+      </div>
+      <div>
+        <h4 data-i18n="footer.links">Ссылки</h4>
+        <a href="https://chromewebstore.google.com/detail/deepseek-usage-monitor/bgnofdddgahndpccpfnlddggfmcjbcco?authuser=0" target="_blank" rel="noopener">Chrome Web Store</a>
+        <a href="https://github.com/rodewitsch/deepseek-usage-monitor" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/rodewitsch/deepseek-usage-monitor/blob/main/README.md" target="_blank" rel="noopener" data-i18n="footer.docs">Документация</a>
+        <a href="#features" data-i18n="footer.features">Возможности</a>
+      </div>
+      <div>
+        <h4 data-i18n="footer.contacts">Контакты</h4>
+        <a href="https://rodevich.com" target="_blank" rel="noopener" data-i18n="footer.author">Автор (rodevitsch)</a>
+        <a href="https://github.com/rodewitsch/deepseek-usage-monitor/issues" target="_blank" rel="noopener" data-i18n="footer.bug">Сообщить об ошибке</a>
+        <a href="https://boosty.to/rodevich" target="_blank" rel="noopener">Boosty</a>
+      </div>
+      <div class="footer-bottom">
+        © <span id="year">2026</span> DeepSeek Usage Monitor. <span data-i18n="footer.bottom">Open source under MIT License.</span>
+        <span data-i18n="footer.disclaimer">Неофициальное расширение, не связано с DeepSeek.</span>
+      </div>
+    </div>
+  </footer>
+
+  <button id="goToTop" class="go-to-top" aria-label="Наверх" data-i18n-aria-label="a11y.toTop">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>

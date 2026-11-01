@@ -1,0 +1,161 @@
+{
+  "locale": "zh_CN",
+  "htmlLang": "zh-CN",
+  "meta": {
+    "title": "DeepSeek Usage Monitor — 在 Chrome 工具栏查看 DeepSeek 余额、消费与预算",
+    "description": "适用于 DeepSeek Platform 的 Chrome 扩展：钱包余额、今日消费与各 API 密钥消费、30 天图表和每日预算，全部显示在浏览器工具栏中。无需 API 密钥，无需密码。",
+    "ogTitle": "DeepSeek Usage Monitor — Chrome 扩展",
+    "ogDesc": "DeepSeek 的余额、今日消费与各密钥消费、30 天图表和每日预算，直接显示在浏览器工具栏中。"
+  },
+  "nav": {
+    "features": "功能",
+    "budgets": "预算",
+    "screenshots": "截图",
+    "privacy": "隐私",
+    "faq": "常见问题",
+    "install": "安装"
+  },
+  "hero": {
+    "badge": "已在 Chrome 应用商店上架",
+    "title": "让您的 <span class=\"grad\">DeepSeek</span><br>尽在掌握",
+    "sub": "钱包余额、今日消费与每个 API 密钥的消费、30 天图表和每日预算，直接显示在浏览器工具栏中。无需 API 密钥、无需密码、无需单独登录。",
+    "install": "从 Chrome 应用商店安装",
+    "source": "源代码",
+    "point1": "工具栏图标实时显示数字",
+    "point2": "按 API 密钥统计消费",
+    "point3": "每日预算与通知",
+    "point4": "没有遥测，没有统计"
+  },
+  "features": {
+    "label": "功能",
+    "title": "一眼看清所有消费",
+    "sub": "扩展只重复 DeepSeek 网页控制台本身的请求，并把它们整理成清晰易懂的面板。"
+  },
+  "f1": {
+    "title": "钱包余额",
+    "desc": "赠送余额与充值余额分开显示。余额低于您设定的阈值时，图标会变红。"
+  },
+  "f2": {
+    "title": "今日消费",
+    "desc": "当天的消费金额与 token 数量。「今日」单独获取，确保数字在跨天前都准确。"
+  },
+  "f3": {
+    "title": "按密钥统计",
+    "desc": "可以看出哪个密钥最贵。图标和图表可以限定到单个密钥或任意密钥组合。"
+  },
+  "f4": {
+    "title": "30 天图表",
+    "desc": "所选时间窗口内的每日柱状图。点击列表中的密钥，柱状图就会变成带颜色图例的堆叠分段。"
+  },
+  "f5": {
+    "title": "图标显示任意指标",
+    "desc": "今日消费、周期消费、余额或 token —— 工具栏图标显示什么，由您决定。"
+  },
+  "f6": {
+    "title": "自动刷新",
+    "desc": "数据按设定的间隔在后台刷新（默认每分钟一次），也可以完全关闭。随时都有手动刷新按钮。"
+  },
+  "budgets": {
+    "label": "预算",
+    "title": "别再为 API 密钥<br>多花冤枉钱",
+    "sub": "为整个账户设置每日预算，并为每个密钥单独设置预算。图标会根据最接近上限的预算显示为绿色、橙色或红色。",
+    "li1": "账户总预算与各密钥独立预算",
+    "li2": "可自定义的预警阈值（默认 90 %）",
+    "li3": "接近上限和超出上限时发送系统通知",
+    "li4": "每个预算每天只通知一次 —— 不打扰",
+    "stat1": "预算已使用",
+    "stat2": "今日剩余",
+    "stat3": "单密钥上限",
+    "card1": "已花费 $1.13 · 共 $10.00，剩余 $8.87",
+    "card2title": "vscode_asus（按密钥）",
+    "card2": "已花费 $1.13 · 超出 $1.00 的 $0.13",
+    "card3title": "vscode_work（按密钥）",
+    "card3": "已花费 $0.13 · 共 $1.00，剩余 $0.87",
+    "card4title": "vscode（按密钥）",
+    "card4": "该密钥的预算已关闭"
+  },
+  "how": {
+    "label": "使用方法",
+    "title": "三步获得第一张图表",
+    "sub": "无需单独注册，也无需 API 密钥 —— 直接复用浏览器中已登录的会话。",
+    "s1title": "安装扩展",
+    "s1desc": "在 Chrome 应用商店一键安装。需要 Chrome 116 或更高版本。",
+    "s2title": "打开 platform.deepseek.com",
+    "s2desc": "登录账户 —— 会话会自动识别。",
+    "s3title": "点击工具栏图标",
+    "s3desc": "首次刷新会自动完成，之后数据在后台持续更新。"
+  },
+  "shots": {
+    "label": "截图",
+    "title": "界面预览",
+    "sub": "深色界面、紧凑网格，没有一个多余的按钮。",
+    "popupTitle": "弹出面板",
+    "popupDesc": "余额、今日消费与 token、预算进度条、图表和 API 密钥列表。",
+    "optionsTitle": "设置",
+    "optionsDesc": "图标指标、密钥选择、刷新间隔、统计窗口、预算与阈值。"
+  },
+  "privacy": {
+    "title": "默认保护隐私",
+    "text": "扩展只与 <code>platform.deepseek.com</code> 通信，发送的只读请求与 DeepSeek 网页控制台完全相同。不保存任何 API 密钥和密码 —— 只复用浏览器中已登录的会话。所有数据只存在您自己的电脑上：没有遥测、统计、广告，也不会提供给第三方。卸载扩展，数据即被删除。",
+    "i1title": "3 个请求",
+    "i1desc": "只使用余额和消费所需的控制台接口。",
+    "i2title": "0 个外部域名",
+    "i2desc": "没有第三方服务器、CDN 或错误上报。",
+    "i3title": "本地存储",
+    "i3desc": "设置与缓存数字保存在 <code>chrome.storage.local</code> 中。",
+    "i4title": "开源",
+    "i4desc": "MIT 许可证，源码在 GitHub —— 每一行都可以检查。"
+  },
+  "faq": {
+    "title": "常见问题",
+    "q1": "需要 DeepSeek API 密钥吗？",
+    "a1": "不需要。扩展使用您在 <code>platform.deepseek.com</code> 已登录的浏览器会话，不会索取或保存 API 密钥和密码。",
+    "q2": "扩展会把我的数据发到别处吗？",
+    "a2": "不会。请求只发往 <code>platform.deepseek.com</code>，其余数据都保存在本地。没有统计、遥测和广告。",
+    "q3": "图标显示「−」怎么办？",
+    "a3": "DeepSeek 的 WAF 令牌已过期。打开一次 <code>platform.deepseek.com</code>，令牌会自动续期，扩展会在下次刷新时获取。扩展绝不会自行打开标签页。",
+    "q4": "图标显示「!」或授权错误",
+    "a4": "未找到会话或会话已过期。请登录平台，然后在扩展设置中点击「重新识别会话」。",
+    "q5": "「今日」数字有多准确？",
+    "a5": "平台的每日序列在当天结束前不包含当天，所以扩展从按小时的序列中取「今日」数据，并单独叠加到图表上。",
+    "q6": "有 Firefox 版本吗？",
+    "a6": "目前仅支持 Chrome 及基于 Chromium 的浏览器（Edge、Brave、Arc）—— 需要 Chrome 116+。"
+  },
+  "cta": {
+    "title": "免费安装",
+    "sub": "本扩展完全免费且开源。",
+    "install": "从 Chrome 应用商店安装",
+    "source": "查看源代码"
+  },
+  "support": {
+    "title": "支持这个项目",
+    "text": "非常感谢您的支持。所有捐助都会用于项目开发和基础设施维护 💙",
+    "button": "支持"
+  },
+  "footer": {
+    "desc": "DeepSeek Platform 的余额、消费与每日预算 —— 直接显示在浏览器工具栏中。",
+    "license": "—— 免费且开源。",
+    "links": "链接",
+    "docs": "文档",
+    "features": "功能",
+    "contacts": "联系方式",
+    "author": "作者（rodevitsch）",
+    "bug": "报告问题",
+    "bottom": "Open source under MIT License.",
+    "disclaimer": "非官方扩展，与 DeepSeek 无关。"
+  },
+  "alt": {
+    "popup": "DeepSeek Usage Monitor 弹出面板：余额、今日消费、预算与图表",
+    "popupShot": "显示余额、今日消费和图表的弹出面板",
+    "optionsShot": "设置页面：图标、刷新、预算、会话"
+  },
+  "a11y": {
+    "menu": "菜单",
+    "toTop": "回到顶部",
+    "lang": "语言",
+    "langCurrent": "当前语言"
+  },
+  "lang": {
+    "ru": "俄语"
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "locale": "en_US",
+  "htmlLang": "en",
+  "meta": {
+    "title": "DeepSeek Usage Monitor — balance, spend and budgets in your Chrome toolbar",
+    "description": "Chrome extension for DeepSeek Platform: wallet balance, today's spend and per-API-key spend, a 30-day chart and daily budgets — right in your browser toolbar. No API key, no password.",
+    "ogTitle": "DeepSeek Usage Monitor — Chrome extension",
+    "ogDesc": "Balance, today's spend and per-key spend, a 30-day chart and daily budgets for DeepSeek — right in your browser toolbar."
+  },
+  "nav": {
+    "features": "Features",
+    "budgets": "Budgets",
+    "screenshots": "Screenshots",
+    "privacy": "Privacy",
+    "faq": "FAQ",
+    "install": "Install"
+  },
+  "hero": {
+    "badge": "Available in the Chrome Web Store",
+    "title": "Your <span class=\"grad\">DeepSeek</span><br>under control",
+    "sub": "Wallet balance, today's spend and per-API-key spend, a 30-day chart and daily budgets — right in your browser toolbar. No API key, no password, no separate sign-in.",
+    "install": "Install from Chrome Web Store",
+    "source": "Source code",
+    "point1": "Toolbar badge with live numbers",
+    "point2": "Spend tracking for every API key",
+    "point3": "Daily budgets and notifications",
+    "point4": "No telemetry, no analytics"
+  },
+  "features": {
+    "label": "Features",
+    "title": "Everything about your spend at a glance",
+    "sub": "The extension repeats only the requests the DeepSeek web console makes and turns them into a readable dashboard."
+  },
+  "f1": {
+    "title": "Wallet balance",
+    "desc": "Paid and bonus balance shown separately. The badge turns red once your balance drops below the threshold you set."
+  },
+  "f2": {
+    "title": "Spend today",
+    "desc": "Today's spend and token count. “Today” is fetched on its own so the number is accurate until the day rolls over."
+  },
+  "f3": {
+    "title": "Per-key accounting",
+    "desc": "See which key costs the most. The badge and the chart can be scoped to a single key or any selection of keys."
+  },
+  "f4": {
+    "title": "30-day chart",
+    "desc": "Daily bars for the selected window. Click keys in the list and the bars become stacked segments with a colour legend."
+  },
+  "f5": {
+    "title": "Badge on your metric",
+    "desc": "Spend today, spend in the period, balance or tokens — you decide what the toolbar icon shows."
+  },
+  "f6": {
+    "title": "Auto refresh",
+    "desc": "Data refreshes in the background on a schedule (once a minute by default) or not at all. A manual refresh button is always there."
+  },
+  "budgets": {
+    "label": "Budgets",
+    "title": "Stop overpaying<br>for API keys",
+    "sub": "Set a daily budget for the whole account and one for each key. The badge turns green, orange or red according to the budget closest to its limit.",
+    "li1": "Account-wide budget plus independent per-key budgets",
+    "li2": "Configurable warning threshold (90 % by default)",
+    "li3": "Desktop notification when nearing and when exceeding a limit",
+    "li4": "One notification per day per budget — no spam",
+    "stat1": "of budget used",
+    "stat2": "left for today",
+    "stat3": "key limit",
+    "card1": "$1.13 spent · $8.87 left of $10.00",
+    "card2title": "vscode_asus (per key)",
+    "card2": "$1.13 spent · over by $0.13 of $1.00",
+    "card3title": "vscode_work (per key)",
+    "card3": "$0.13 spent · $0.87 left of $1.00",
+    "card4title": "vscode (per key)",
+    "card4": "Budget for this key is off"
+  },
+  "how": {
+    "label": "How it works",
+    "title": "Three steps to your first chart",
+    "sub": "No separate sign-up and no API key — the extension reuses the session already open in your browser.",
+    "s1title": "Install the extension",
+    "s1desc": "One click from the Chrome Web Store. Requires Chrome 116 or newer.",
+    "s2title": "Open platform.deepseek.com",
+    "s2desc": "Sign in — the session is picked up automatically.",
+    "s3title": "Click the toolbar icon",
+    "s3desc": "The first refresh happens by itself. After that data updates in the background."
+  },
+  "shots": {
+    "label": "Screenshots",
+    "title": "What it looks like",
+    "sub": "Dark interface, dense grid and not a single unnecessary button.",
+    "popupTitle": "Popup",
+    "popupDesc": "Balance, today's spend and tokens, budget bars, chart and the list of API keys.",
+    "optionsTitle": "Settings",
+    "optionsDesc": "Badge metric, key selection, refresh interval, aggregation window, budgets and thresholds."
+  },
+  "privacy": {
+    "title": "Private by default",
+    "text": "The extension talks only to <code>platform.deepseek.com</code> and makes the same read-only requests the DeepSeek web console does. No API key and no password are stored — it reuses the session already open in your browser. All data stays on your own computer: no telemetry, analytics, ads or third-party sharing. Remove the extension and the data is gone.",
+    "i1title": "3 requests",
+    "i1desc": "Only the console endpoints needed for balance and spend.",
+    "i2title": "0 third-party domains",
+    "i2desc": "No external servers, CDNs or error reporting.",
+    "i3title": "Local storage",
+    "i3desc": "Settings and cached figures live in <code>chrome.storage.local</code>.",
+    "i4title": "Open source",
+    "i4desc": "MIT licence, sources on GitHub — every line can be checked."
+  },
+  "faq": {
+    "title": "Frequently asked",
+    "q1": "Do I need a DeepSeek API key?",
+    "a1": "No. The extension uses the session already open in your browser on <code>platform.deepseek.com</code>. No API key or password is requested or stored.",
+    "q2": "Does the extension send my data anywhere else?",
+    "a2": "No. Requests go only to <code>platform.deepseek.com</code>; everything else stays local. No analytics, telemetry or ads.",
+    "q3": "The badge shows “−”, what should I do?",
+    "a3": "The DeepSeek WAF token expired. Open <code>platform.deepseek.com</code> once — the token renews itself and the extension picks it up on the next refresh. The extension never opens tabs on its own.",
+    "q4": "The badge shows “!” or an authorization error",
+    "a4": "The session was not found or has expired. Sign in to the platform, then press “Re-detect session” in the extension settings.",
+    "q5": "How accurate is the “today” figure?",
+    "a5": "The platform's daily series does not include the current day until it ends, so the extension takes “today” from the hourly series and adds it to the chart separately.",
+    "q6": "Is there a Firefox version?",
+    "a6": "Chrome and Chromium-based browsers only (Edge, Brave, Arc) — Chrome 116+ is required."
+  },
+  "cta": {
+    "title": "Install for free",
+    "sub": "The extension is completely free and open source.",
+    "install": "Install from Chrome Web Store",
+    "source": "View source code"
+  },
+  "support": {
+    "title": "Support the project",
+    "text": "Your support is much appreciated. Every donation goes into developing projects and keeping the infrastructure running 💙",
+    "button": "Donate"
+  },
+  "footer": {
+    "desc": "Balance, spend and daily budgets for DeepSeek Platform — right in your browser toolbar.",
+    "license": "— free and open source.",
+    "links": "Links",
+    "docs": "Documentation",
+    "features": "Features",
+    "contacts": "Contacts",
+    "author": "Author (rodevitsch)",
+    "bug": "Report an issue",
+    "bottom": "Open source under MIT License.",
+    "disclaimer": "Unofficial extension, not affiliated with DeepSeek."
+  },
+  "alt": {
+    "popup": "DeepSeek Usage Monitor popup: balance, today's spend, budgets and chart",
+    "popupShot": "Popup with balance, today's spend and chart",
+    "optionsShot": "Options page: badge, refresh, budgets, session"
+  },
+  "a11y": {
+    "menu": "Menu",
+    "toTop": "Back to top",
+    "lang": "Language",
+    "langCurrent": "Current language"
+  },
+  "lang": {
+    "ru": "Russian"
+  }
+}

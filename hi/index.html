@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DeepSeek Usage Monitor — Chrome टूलबार में DeepSeek का बैलेंस, खर्च और बजट</title>
+
+  <link rel="icon" type="image/png" sizes="128x128" href="../assets/images/icon128.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="../assets/images/icon48.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/icon16.png">
+
+  <meta name="description" data-i18n-content="meta.description" content="Расширение Chrome для DeepSeek Platform: баланс кошелька, траты за сегодня и по каждому API-ключу, график за 30 дней и дневные бюджеты — прямо в панели браузера. Без API-ключа и пароля.">
+  <meta name="keywords" content="DeepSeek, DeepSeek Platform, usage monitor, баланс DeepSeek, траты API, бюджеты API-ключей, расширение Chrome, developer tools">
+  <meta name="author" content="Dmitry Rodevich">
+  <link rel="canonical" href="https://deepseek-usage-monitor.rodevich.com/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" data-i18n-content="meta.ogTitle" content="DeepSeek Usage Monitor — расширение для Chrome">
+  <meta property="og:description" data-i18n-content="meta.ogDesc" content="Баланс, траты за сегодня и по API-ключам, график за 30 дней и дневные бюджеты DeepSeek — прямо в панели браузера.">
+  <meta property="og:image" content="assets/images/popup.png">
+  <meta property="og:url" content="https://deepseek-usage-monitor.rodevich.com/">
+  <meta property="og:locale" content="hi_IN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" data-i18n-content="meta.ogTitle" content="DeepSeek Usage Monitor — расширение для Chrome">
+  <meta name="twitter:description" data-i18n-content="meta.ogDesc" content="Баланс, траты за сегодня и по API-ключам, график за 30 дней и дневные бюджеты DeepSeek — прямо в панели браузера.">
+  <meta name="twitter:image" content="assets/images/popup.png">
+
+  <meta name="theme-color" content="#0a0a0f">
+
+  <link rel="alternate" hreflang="ru" href="https://deepseek-usage-monitor.rodevich.com/">
+  <link rel="alternate" hreflang="en" href="https://deepseek-usage-monitor.rodevich.com/en/">
+  <link rel="alternate" hreflang="de" href="https://deepseek-usage-monitor.rodevich.com/de/">
+  <link rel="alternate" hreflang="es" href="https://deepseek-usage-monitor.rodevich.com/es/">
+  <link rel="alternate" hreflang="fr" href="https://deepseek-usage-monitor.rodevich.com/fr/">
+  <link rel="alternate" hreflang="hi" href="https://deepseek-usage-monitor.rodevich.com/hi/">
+  <link rel="alternate" hreflang="id" href="https://deepseek-usage-monitor.rodevich.com/id/">
+  <link rel="alternate" hreflang="ja" href="https://deepseek-usage-monitor.rodevich.com/ja/">
+  <link rel="alternate" hreflang="pt-BR" href="https://deepseek-usage-monitor.rodevich.com/pt_BR/">
+  <link rel="alternate" hreflang="zh-CN" href="https://deepseek-usage-monitor.rodevich.com/zh_CN/">
+  <link rel="alternate" hreflang="x-default" href="https://deepseek-usage-monitor.rodevich.com/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "DeepSeek Usage Monitor",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Chrome 116+",
+    "url": "https://deepseek-usage-monitor.rodevich.com/",
+    "downloadUrl": "https://chromewebstore.google.com/detail/deepseek-usage-monitor/bgnofdddgahndpccpfnlddggfmcjbcco",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "author": { "@type": "Person", "name": "Dmitry Rodevich", "url": "https://rodevich.com" },
+    "description": "Баланс кошелька, траты за сегодня и по API-ключам, график за 30 дней и дневные бюджеты DeepSeek Platform прямо в панели браузера."
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ===== Background ===== -->
+  <div class="bg-glow" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <!-- ===== Nav ===== -->
+  <nav id="navbar">
+    <div class="container">
+      <a href="#" class="nav-brand">
+        <img src="../assets/images/icon48.png" alt="DeepSeek Usage Monitor">
+        DeepSeek Usage
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#features" data-i18n="nav.features">सुविधाएँ</a></li>
+        <li><a href="#budgets" data-i18n="nav.budgets">बजट</a></li>
+        <li><a href="#screenshots" data-i18n="nav.screenshots">स्क्रीनशॉट</a></li>
+        <li><a href="#privacy" data-i18n="nav.privacy">प्राइवेसी</a></li>
+        <li><a href="#faq" data-i18n="nav.faq">सवाल-जवाब</a></li>
+        <li><a href="https://github.com/rodewitsch/deepseek-usage-monitor" target="_blank" rel="noopener">GitHub</a></li>
+        <li>
+          <a class="nav-cta" href="https://chromewebstore.google.com/detail/deepseek-usage-monitor/bgnofdddgahndpccpfnlddggfmcjbcco?authuser=0" target="_blank" rel="noopener" data-i18n="nav.install">इंस्टॉल करें</a>
+        </li>
+      </ul>
+      <div class="nav-side">
+        <div class="lang-switch" id="langSwitch">
+          <button type="button" class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="भाषा" data-i18n-aria-label="a11y.lang">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18"/></svg>
+            <span class="lang-code">HI</span>
+          </button>
+          <div class="lang-menu" role="menu">
+            <a href="../" hreflang="ru">Русский</a>
+            <a href="../en/" hreflang="en">English</a>
+            <a href="../de/" hreflang="de">Deutsch</a>
+            <a href="../es/" hreflang="es">Español</a>
+            <a href="../fr/" hreflang="fr">Français</a>
+            <a href="../hi/" hreflang="hi" class="active" aria-current="true">हिन्दी</a>
+            <a href="../id/" hreflang="id">Bahasa Indonesia</a>
+            <a href="../ja/" hreflang="ja">日本語</a>
+            <a href="../pt_BR/" hreflang="pt_BR">Português (Brasil)</a>
+            <a href="../zh_CN/" hreflang="zh_CN">简体中文</a>
+          </div>
+        </div>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="मेन्यू" aria-expanded="false" data-i18n-aria-label="a11y.menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          <span data-i18n="hero.badge">Chrome Web Store पर उपलब्ध</span>
+        </div>
+
+        <h1 data-i18n-html="hero.title">आपका <span class="grad">DeepSeek</span><br>आपके कंट्रोल में</h1>
+
+        <p class="hero-sub" data-i18n="hero.sub">वॉलेट बैलेंस, आज का खर्च और हर API की का अलग खर्च, 30 दिन का चार्ट और रोज़ के बजट — सीधे ब्राउज़र टूलबार में। न API की चाहिए, न पासवर्ड, न अलग से लॉगिन।</p>
+
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/deepseek-usage-monitor/bgnofdddgahndpccpfnlddggfmcjbcco?authuser=0" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12"/><path d="M6 10l6 6 6-6"/><path d="M4 20h16"/></svg>
+            <span data-i18n="hero.install">Chrome Web Store से इंस्टॉल करें</span>
+          </a>
+          <a class="btn btn-ghost" href="https://github.com/rodewitsch/deepseek-usage-monitor" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span data-i18n="hero.source">सोर्स कोड</span>
+          </a>
+        </div>
+
+        <ul class="hero-points">
+          <li data-i18n="hero.point1">टूलबार आइकन पर लाइव आँकड़े</li>
+          <li data-i18n="hero.point2">हर API की के खर्च का हिसाब</li>
+          <li data-i18n="hero.point3">रोज़ के बजट और सूचनाएँ</li>
+          <li data-i18n="hero.point4">कोई टेलीमेट्री, कोई एनालिटिक्स नहीं</li>
+        </ul>
+      </div>
+
+      <div class="hero-visual">
+        <div class="browser-frame">
+          <div class="browser-bar">
+            <span class="traffic"></span><span class="traffic"></span><span class="traffic"></span>
+            <div class="url-bar">
+              <span class="badge-demo">14%</span>
+              platform.deepseek.com
+            </div>
+            <img class="ext-icon" src="../assets/images/icon32.png" alt="">
+          </div>
+          <div class="popup-wrap">
+            <img src="../assets/images/popup.png" alt="DeepSeek Usage Monitor popup" data-i18n-alt="alt.popup" width="432" height="700">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Features ===== -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label" data-i18n="features.label">सुविधाएँ</span>
+        <h2 class="section-title" data-i18n="features.title">खर्च की पूरी जानकारी एक नज़र में</h2>
+        <p class="section-sub" data-i18n="features.sub">एक्सटेंशन सिर्फ़ वही रिक्वेस्ट भेजता है जो DeepSeek की वेब कंसोल भेजती है, और उनसे एक साफ़ डैशबोर्ड बनाता है।</p>
+      </div>
+
+      <div class="features-grid">
+        <article class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M2 12h20"/></svg>
+          </div>
+          <h3 data-i18n="f1.title">वॉलेट बैलेंस</h3>
+          <p data-i18n="f1.desc">पेड और बोनस बैलेंस अलग-अलग। आपकी तय सीमा से बैलेंस नीचे जाते ही आइकन लाल हो जाता है।</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M17 7h4v4"/></svg>
+          </div>
+          <h3 data-i18n="f2.title">आज का खर्च</h3>
+          <p data-i18n="f2.desc">आज का खर्च और टोकन की संख्या। सही आँकड़े के लिए “आज” अलग से लिया जाता है, ताकि दिन बदलने तक संख्या सटीक रहे।</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+          </div>
+          <h3 data-i18n="f3.title">हर API की का हिसाब</h3>
+          <p data-i18n="f3.desc">पता चलता है कौन सी की सबसे महँगी है। आइकन और चार्ट को एक की या कीज़ के किसी भी चयन तक सीमित किया जा सकता है।</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+          </div>
+          <h3 data-i18n="f4.title">30 दिन का चार्ट</h3>
+          <p data-i18n="f4.desc">चुनी गई अवधि के लिए रोज़ के बार। सूची में कीज़ पर क्लिक करें — बार अलग-अलग रंगों वाले स्टैक्ड सेगमेंट बन जाते हैं।</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          </div>
+          <h3 data-i18n="f5.title">आपके मेट्रिक पर आइकन</h3>
+          <p data-i18n="f5.desc">आज का खर्च, अवधि का खर्च, बैलेंस या टोकन — टूलबार आइकन पर क्या दिखे, यह आप तय करते हैं।</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          </div>
+          <h3 data-i18n="f6.title">ऑटो रिफ़्रेश</h3>
+          <p data-i18n="f6.desc">डेटा तय समय पर बैकग्राउंड में अपडेट होता है (डिफ़ॉल्ट रूप से हर मिनट) या बिल्कुल नहीं। मैन्युअल रिफ़्रेश का बटन हमेशा मौजूद रहता है।</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Budgets ===== -->
+  <section class="section section-alt" id="budgets">
+    <div class="container">
+      <div class="split">
+        <div class="split-text">
+          <span class="section-label" data-i18n="budgets.label">बजट</span>
+          <h2 class="section-title" data-i18n-html="budgets.title">API कीज़ पर<br>ज़्यादा खर्च बंद करें</h2>
+          <p class="split-sub" data-i18n="budgets.sub">पूरे अकाउंट के लिए और हर की के लिए अलग रोज़ का बजट तय करें। आइकन हरा, नारंगी या लाल हो जाता है — उस बजट के हिसाब से जो अपनी सीमा के सबसे क़रीब है।</p>
+
+          <ul class="check-list">
+            <li data-i18n="budgets.li1">अकाउंट का कुल बजट और हर की के अलग बजट</li>
+            <li data-i18n="budgets.li2">बदली जा सकने वाली चेतावनी सीमा (डिफ़ॉल्ट 90 %)</li>
+            <li data-i18n="budgets.li3">सीमा के क़रीब आने और पार होने पर सिस्टम सूचना</li>
+            <li data-i18n="budgets.li4">हर बजट के लिए दिन में एक सूचना — कोई स्पैम नहीं</li>
+          </ul>
+
+          <div class="stat-row">
+            <div class="stat"><strong>11%</strong><span data-i18n="budgets.stat1">बजट खर्च</span></div>
+            <div class="stat"><strong>$8.87</strong><span data-i18n="budgets.stat2">आज बचा है</span></div>
+            <div class="stat stat-danger"><strong>113%</strong><span data-i18n="budgets.stat3">की की सीमा</span></div>
+          </div>
+        </div>
+
+        <div class="split-visual">
+          <div class="budget-card">
+            <div class="budget-head">
+              <span class="budget-title">Daily Budget · vscode_asus</span>
+              <span class="budget-pct ok">11%</span>
+            </div>
+            <div class="bar"><span class="bar-fill ok" style="width:11%"></span><span class="bar-warn" style="left:90%"></span></div>
+            <p class="budget-note" data-i18n="budgets.card1">$1.13 खर्च · $10.00 में से $8.87 बचे</p>
+          </div>
+
+          <div class="budget-card">
+            <div class="budget-head">
+              <span class="budget-title" data-i18n="budgets.card2title">vscode_asus (हर की)</span>
+              <span class="budget-pct danger">113%</span>
+            </div>
+            <div class="bar"><span class="bar-fill danger" style="width:100%"></span><span class="bar-warn" style="left:90%"></span></div>
+            <p class="budget-note" data-i18n="budgets.card2">$1.13 खर्च · $1.00 से $0.13 ज़्यादा</p>
+          </div>
+
+          <div class="budget-card">
+            <div class="budget-head">
+              <span class="budget-title" data-i18n="budgets.card3title">vscode_work (हर की)</span>
+              <span class="budget-pct ok">13%</span>
+            </div>
+            <div class="bar"><span class="bar-fill ok" style="width:13%"></span><span class="bar-warn" style="left:90%"></span></div>
+            <p class="budget-note" data-i18n="budgets.card3">$0.13 खर्च · $1.00 में से $0.87 बचे</p>
+          </div>
+
+          <div class="budget-card muted">
+            <div class="budget-head">
+              <span class="budget-title" data-i18n="budgets.card4title">vscode (हर की)</span>
+              <span class="budget-pct">off</span>
+            </div>
+            <div class="bar"><span class="bar-fill" style="width:0"></span></div>
+            <p class="budget-note" data-i18n="budgets.card4">इस की का बजट बंद है</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== How it works ===== -->
+  <section class="section" id="how-it-works">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label" data-i18n="how.label">यह कैसे काम करता है</span>
+        <h2 class="section-title" data-i18n="how.title">पहले चार्ट तक तीन क़दम</h2>
+        <p class="section-sub" data-i18n="how.sub">अलग रजिस्ट्रेशन या API की की ज़रूरत नहीं — ब्राउज़र में पहले से खुला सेशन इस्तेमाल होता है।</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">01</span>
+          <h4 data-i18n="how.s1title">एक्सटेंशन इंस्टॉल करें</h4>
+          <p data-i18n="how.s1desc">Chrome Web Store से एक क्लिक में। Chrome 116 या नया चाहिए।</p>
+        </div>
+        <div class="step">
+          <span class="step-num">02</span>
+          <h4 data-i18n="how.s2title">platform.deepseek.com खोलें</h4>
+          <p data-i18n="how.s2desc">साइन इन करें — सेशन अपने आप पकड़ लिया जाता है।</p>
+        </div>
+        <div class="step">
+          <span class="step-num">03</span>
+          <h4 data-i18n="how.s3title">आइकन पर क्लिक करें</h4>
+          <p data-i18n="how.s3desc">पहला रिफ़्रेश अपने आप होता है। उसके बाद डेटा बैकग्राउंड में अपडेट होता रहता है।</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Screenshots ===== -->
+  <section class="section section-alt" id="screenshots">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label" data-i18n="shots.label">स्क्रीनशॉट</span>
+        <h2 class="section-title" data-i18n="shots.title">यह कैसा दिखता है</h2>
+        <p class="section-sub" data-i18n="shots.sub">डार्क इंटरफ़ेस, घनी ग्रिड और एक भी फ़ालतू बटन नहीं।</p>
+      </div>
+
+      <div class="shots">
+        <figure class="shot">
+          <div class="shot-body">
+            <img src="../assets/images/popup.png" alt="Popup: balance, spend today and chart" data-i18n-alt="alt.popupShot" loading="lazy" width="432" height="700">
+          </div>
+          <figcaption>
+            <h4 data-i18n="shots.popupTitle">पॉपअप</h4>
+            <p data-i18n="shots.popupDesc">बैलेंस, आज का खर्च और टोकन, बजट बार, चार्ट और API कीज़ की सूची।</p>
+          </figcaption>
+        </figure>
+
+        <figure class="shot">
+          <div class="shot-body">
+            <img src="../assets/images/options.png" alt="Options page: badge, refresh, budgets, session" data-i18n-alt="alt.optionsShot" loading="lazy" width="1280" height="1280">
+          </div>
+          <figcaption>
+            <h4 data-i18n="shots.optionsTitle">सेटिंग्स</h4>
+            <p data-i18n="shots.optionsDesc">आइकन का मेट्रिक, कीज़ का चयन, रिफ़्रेश अंतराल, एग्रीगेशन अवधि, बजट और सीमाएँ।</p>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Privacy ===== -->
+  <section class="section" id="privacy">
+    <div class="container">
+      <div class="privacy-box">
+        <div class="privacy-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <div>
+          <h2 data-i18n="privacy.title">डिफ़ॉल्ट रूप से निजी</h2>
+          <p data-i18n-html="privacy.text">एक्सटेंशन सिर्फ़ <code>platform.deepseek.com</code> से बात करता है और वही रीड-ओनली रिक्वेस्ट भेजता है जो DeepSeek की वेब कंसोल भेजती है। कोई API की या पासवर्ड सेव नहीं होता — ब्राउज़र में पहले से खुला सेशन इस्तेमाल होता है। सारा डेटा सिर्फ़ आपके कंप्यूटर पर रहता है: कोई टेलीमेट्री, एनालिटिक्स, विज्ञापन या तीसरे पक्ष को डेटा नहीं। एक्सटेंशन हटाया — डेटा ख़त्म।</p>
+        </div>
+      </div>
+
+      <div class="privacy-grid">
+        <div class="privacy-item">
+          <h4 data-i18n="privacy.i1title">3 रिक्वेस्ट</h4>
+          <p data-i18n="privacy.i1desc">सिर्फ़ वही कंसोल endpoint जो बैलेंस और खर्च के लिए ज़रूरी हैं।</p>
+        </div>
+        <div class="privacy-item">
+          <h4 data-i18n="privacy.i2title">0 बाहरी डोमेन</h4>
+          <p data-i18n="privacy.i2desc">कोई तीसरे पक्ष का सर्वर, CDN या एरर रिपोर्टिंग नहीं।</p>
+        </div>
+        <div class="privacy-item">
+          <h4 data-i18n="privacy.i3title">लोकल स्टोरेज</h4>
+          <p data-i18n-html="privacy.i3desc">सेटिंग्स और कैश किए आँकड़े <code>chrome.storage.local</code> में रहते हैं।</p>
+        </div>
+        <div class="privacy-item">
+          <h4 data-i18n="privacy.i4title">खुला सोर्स</h4>
+          <p data-i18n="privacy.i4desc">MIT लाइसेंस, GitHub पर सोर्स — हर लाइन जाँची जा सकती है।</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="section section-alt" id="faq">
+    <div class="container container-narrow">
+      <div class="section-head">
+        <span class="section-label">FAQ</span>
+        <h2 class="section-title" data-i18n="faq.title">आम सवाल</h2>
+      </div>
+
+      <details class="faq" open>
+        <summary data-i18n="faq.q1">क्या DeepSeek API की चाहिए?</summary>
+        <p data-i18n-html="faq.a1">नहीं। एक्सटेंशन वही सेशन इस्तेमाल करता है जो <code>platform.deepseek.com</code> पर ब्राउज़र में पहले से खुला है। API की या पासवर्ड न माँगा जाता है, न सेव किया जाता है।</p>
+      </details>
+
+      <details class="faq">
+        <summary data-i18n="faq.q2">क्या एक्सटेंशन मेरा डेटा कहीं और भेजता है?</summary>
+        <p data-i18n-html="faq.a2">नहीं। रिक्वेस्ट सिर्फ़ <code>platform.deepseek.com</code> पर जाती हैं, बाक़ी सब लोकल रहता है। कोई एनालिटिक्स, टेलीमेट्री या विज्ञापन नहीं।</p>
+      </details>
+
+      <details class="faq">
+        <summary data-i18n="faq.q3">आइकन पर “−” दिख रहा है, क्या करें?</summary>
+        <p data-i18n-html="faq.a3">DeepSeek का WAF टोकन एक्सपायर हो गया है। एक बार <code>platform.deepseek.com</code> खोलें — टोकन खुद रिन्यू हो जाता है और अगले रिफ़्रेश पर एक्सटेंशन उसे पकड़ लेता है। यह अपने आप कोई टैब नहीं खोलता।</p>
+      </details>
+
+      <details class="faq">
+        <summary data-i18n="faq.q4">आइकन पर “!” या ऑथराइज़ेशन एरर दिख रहा है</summary>
+        <p data-i18n="faq.a4">सेशन नहीं मिला या एक्सपायर हो गया। प्लेटफ़ॉर्म पर साइन इन करें, फिर एक्सटेंशन सेटिंग्स में “सेशन फिर से पहचानें” दबाएँ।</p>
+      </details>
+
+      <details class="faq">
+        <summary data-i18n="faq.q5">“आज” का आँकड़ा कितना सटीक है?</summary>
+        <p data-i18n="faq.a5">प्लेटफ़ॉर्म की रोज़ की सीरीज़ में चालू दिन दिन ख़त्म होने तक नहीं आता, इसलिए एक्सटेंशन “आज” घंटे-वाली सीरीज़ से लेकर चार्ट में अलग से जोड़ता है।</p>
+      </details>
+
+      <details class="faq">
+        <summary data-i18n="faq.q6">क्या Firefox के लिए वर्ज़न है?</summary>
+        <p data-i18n="faq.a6">फ़िलहाल सिर्फ़ Chrome और Chromium आधारित ब्राउज़र (Edge, Brave, Arc) — Chrome 116+ चाहिए।</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta-section">
+    <div class="container">
+      <img class="cta-icon" src="../assets/images/icon128.png" alt="" width="72" height="72">
+      <h2 data-i18n="cta.title">मुफ़्त इंस्टॉल करें</h2>
+      <p data-i18n="cta.sub">एक्सटेंशन पूरी तरह मुफ़्त और ओपन सोर्स है।</p>
+      <div class="cta-buttons">
+        <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/deepseek-usage-monitor/bgnofdddgahndpccpfnlddggfmcjbcco?authuser=0" target="_blank" rel="noopener" data-i18n="cta.install">Chrome Web Store से इंस्टॉल करें</a>
+        <a class="btn btn-ghost" href="https://github.com/rodewitsch/deepseek-usage-monitor" target="_blank" rel="noopener" data-i18n="cta.source">सोर्स कोड देखें</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Support ===== -->
+  <section class="section support-section">
+    <div class="container container-narrow">
+      <h2 data-i18n="support.title">प्रोजेक्ट को सहयोग दें</h2>
+      <p data-i18n="support.text">आपके सहयोग के लिए आभारी रहूँगा। हर दान प्रोजेक्ट्स के विकास और इन्फ़्रास्ट्रक्चर को चलाने में लगता है 💙</p>
+      <a class="btn btn-primary" href="https://boosty.to/rodevich/donate" target="_blank" rel="noopener" data-i18n="support.button">सहयोग करें</a>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="../assets/images/icon48.png" alt="" width="28" height="28">
+          DeepSeek Usage Monitor
+        </div>
+        <p data-i18n="footer.desc">DeepSeek Platform का बैलेंस, खर्च और रोज़ के बजट — सीधे ब्राउज़र टूलबार में।</p>
+        <p class="muted">
+          <a href="https://github.com/rodewitsch/deepseek-usage-monitor/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
+          <span data-i18n="footer.license">— मुफ़्त और ओपन सोर्स।</span>
+        </p>
+      </div>
+      <div>
+        <h4 data-i18n="footer.links">लिंक</h4>
+        <a href="https://chromewebstore.google.com/detail/deepseek-usage-monitor/bgnofdddgahndpccpfnlddggfmcjbcco?authuser=0" target="_blank" rel="noopener">Chrome Web Store</a>
+        <a href="https://github.com/rodewitsch/deepseek-usage-monitor" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/rodewitsch/deepseek-usage-monitor/blob/main/README.md" target="_blank" rel="noopener" data-i18n="footer.docs">डॉक्युमेंटेशन</a>
+        <a href="#features" data-i18n="footer.features">सुविधाएँ</a>
+      </div>
+      <div>
+        <h4 data-i18n="footer.contacts">संपर्क</h4>
+        <a href="https://rodevich.com" target="_blank" rel="noopener" data-i18n="footer.author">लेखक (rodevitsch)</a>
+        <a href="https://github.com/rodewitsch/deepseek-usage-monitor/issues" target="_blank" rel="noopener" data-i18n="footer.bug">बग की सूचना दें</a>
+        <a href="https://boosty.to/rodevich" target="_blank" rel="noopener">Boosty</a>
+      </div>
+      <div class="footer-bottom">
+        © <span id="year">2026</span> DeepSeek Usage Monitor. <span data-i18n="footer.bottom">Open source under MIT License.</span>
+        <span data-i18n="footer.disclaimer">अनौपचारिक एक्सटेंशन, DeepSeek से जुड़ा नहीं है।</span>
+      </div>
+    </div>
+  </footer>
+
+  <button id="goToTop" class="go-to-top" aria-label="ऊपर जाएँ" data-i18n-aria-label="a11y.toTop">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <script src="../script.js"></script>
+</body>
+</html>
